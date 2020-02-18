@@ -13,8 +13,10 @@ import {
   Sidebar,
   MenuItem,
   Content,
+  TabContent,
   StyledTooltip
 } from './styled-components';
+import TimeRow from '../TimeRow/TimeRow';
 
 export default class Popup extends React.Component {
   constructor(props) {
@@ -68,7 +70,11 @@ export default class Popup extends React.Component {
               );
             })}
           </Sidebar>
-          <Content />
+          <Content>
+            <TabContent className={selectedMenuItem === 'addTime' && 'show'}>
+              <TimeRow />
+            </TabContent>
+          </Content>
         </PopupContainer>
       </StylesProvider>
     );

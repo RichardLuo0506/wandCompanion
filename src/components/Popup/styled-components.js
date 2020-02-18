@@ -45,4 +45,16 @@ export const StyledTooltip = withStyles(() => ({
   }
 }))(Tooltip);
 
-export const Content = styled.div``;
+export const Content = styled.div`
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+`;
+export const TabContent = styled.div`
+  display: none;
+  width: 100%;
+  &.show {
+    display: flex;
+  }
+`;
