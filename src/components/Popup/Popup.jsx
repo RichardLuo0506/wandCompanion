@@ -13,8 +13,10 @@ import {
   Sidebar,
   MenuItem,
   Content,
+  TabContent,
   StyledTooltip
 } from './styled-components';
+import TimeRow from '../TimeRow/TimeRow';
 import Branding from '../Branding/Branding.jsx';
 
 export default class Popup extends React.Component {
@@ -71,6 +73,9 @@ export default class Popup extends React.Component {
           </Sidebar>
           <Content>
             <Branding />
+            <TabContent className={selectedMenuItem === 'addTime' && 'show'}>
+              <TimeRow />
+            </TabContent>
           </Content>
         </PopupContainer>
       </StylesProvider>
