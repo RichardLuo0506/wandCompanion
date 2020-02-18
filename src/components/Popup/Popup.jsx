@@ -6,19 +6,21 @@ const jss = create({
   insertionPoint: document.getElementById('jss-insertion-point')
 });
 
-import Tooltip from '@material-ui/core/Tooltip';
 import AddAlarmIcon from '@material-ui/icons/AddAlarm';
 import SettingsIcon from '@material-ui/icons/Settings';
 import {
   PopupContainer,
   Sidebar,
   MenuItem,
-  Content
+  Content,
+  StyledTooltip
 } from './styled-components';
 
 export default class Popup extends React.Component {
   constructor(props) {
     super(props);
+
+    this.onMenuItemClick = this.onMenuItemClick.bind(this);
 
     this.state = {
       menuItems: [
@@ -49,14 +51,20 @@ export default class Popup extends React.Component {
           <Sidebar>
             {menuItems.map(menuItem => {
               return (
-                <Tooltip
+                <StyledTooltip
                   key={menuItem.id}
                   title={menuItem.title}
                   placement="right"
                   className={selectedMenuItem === menuItem.id && 'selected'}
                 >
-                  <MenuItem>{menuItem.icon}</MenuItem>
-                </Tooltip>
+                  <MenuItem
+                    onClick={() => {
+                      this.onMenuItemClick(menuItem.id);
+                    }}
+                  >
+                    {menuItem.icon}
+                  </MenuItem>
+                </StyledTooltip>
               );
             })}
           </Sidebar>
@@ -64,6 +72,10 @@ export default class Popup extends React.Component {
         </PopupContainer>
       </StylesProvider>
     );
+  }
+
+  onMenuItemClick(id) {
+    alert(id);
   }
 
   selectMenuItem(id) {
