@@ -2,8 +2,8 @@ import React from 'react';
 import TextField from '@material-ui/core/TextField';
 import { makeStyles } from '@material-ui/core/styles';
 
-export default function MyTimePicker(props) {
-  const { label, defaultValue, className } = props;
+export default function MyTextFieldTimePicker(props) {
+  const { label, defaultValue } = props;
   const classes = useStyles();
 
   return (
@@ -23,7 +23,7 @@ export default function MyTimePicker(props) {
 }
 const useStyles = makeStyles(() => ({
   textField: {
-    width: 100,
+    width: `100px`,
     margin: 16
   }
 }));

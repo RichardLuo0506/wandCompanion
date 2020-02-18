@@ -10,7 +10,8 @@ const jss = create({
   insertionPoint: document.getElementById('jss-insertion-point')
 });
 import { theme } from '../theme';
-
+import DateFnsUtils from '@date-io/date-fns';
+import { MuiPickersUtilsProvider } from '@material-ui/pickers';
 import AddAlarmIcon from '@material-ui/icons/AddAlarm';
 import SettingsIcon from '@material-ui/icons/Settings';
 import {
@@ -19,9 +20,12 @@ import {
   MenuItem,
   Content,
   TabContent,
-  StyledTooltip
+  StyledTooltip,
+  TopSection,
+  BottomSection
 } from './styled-components';
 import TimeRow from '../TimeRow/TimeRow';
+import AddTimeBtnGrp from '../AddTimeBtnGrp/AddTimeBtnGrp';
 
 export default class Popup extends React.Component {
   constructor(props) {
@@ -54,35 +58,44 @@ export default class Popup extends React.Component {
     const { selectedMenuItem } = this.state;
     return (
       <ThemeProvider theme={theme}>
-        <StylesProvider jss={jss}>
-          <PopupContainer>
-            <Sidebar>
-              {menuItems.map(menuItem => {
-                return (
-                  <StyledTooltip
-                    key={menuItem.id}
-                    title={menuItem.title}
-                    placement="right"
-                    className={selectedMenuItem === menuItem.id && 'selected'}
-                  >
-                    <MenuItem
-                      onClick={() => {
-                        this.onMenuItemClick(menuItem.id);
-                      }}
+        <MuiPickersUtilsProvider utils={DateFnsUtils}>
+          <StylesProvider jss={jss}>
+            <PopupContainer>
+              <Sidebar>
+                {menuItems.map(menuItem => {
+                  return (
+                    <StyledTooltip
+                      key={menuItem.id}
+                      title={menuItem.title}
+                      placement="right"
+                      className={selectedMenuItem === menuItem.id && 'selected'}
                     >
-                      {menuItem.icon}
-                    </MenuItem>
-                  </StyledTooltip>
-                );
-              })}
-            </Sidebar>
-            <Content>
-              <TabContent className={selectedMenuItem === 'addTime' && 'show'}>
-                <TimeRow />
-              </TabContent>
-            </Content>
-          </PopupContainer>
-        </StylesProvider>
+                      <MenuItem
+                        onClick={() => {
+                          this.onMenuItemClick(menuItem.id);
+                        }}
+                      >
+                        {menuItem.icon}
+                      </MenuItem>
+                    </StyledTooltip>
+                  );
+                })}
+              </Sidebar>
+              <Content>
+                <TabContent
+                  className={`${selectedMenuItem === 'addTime' &&
+                    'show'} addTime`}
+                >
+                  <TopSection boxShadow={2} />
+                  <BottomSection>
+                    <TimeRow />
+                    <AddTimeBtnGrp />
+                  </BottomSection>
+                </TabContent>
+              </Content>
+            </PopupContainer>
+          </StylesProvider>
+        </MuiPickersUtilsProvider>
       </ThemeProvider>
     );
   }

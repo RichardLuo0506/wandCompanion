@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { withStyles } from '@material-ui/core/styles';
 import Tooltip from '@material-ui/core/Tooltip';
 import { color, icon, MyIconButton } from '../common-styled-components';
+import Box from '@material-ui/core/Box';
 
 export const PopupContainer = styled.div`
   display: flex;
@@ -51,10 +52,28 @@ export const Content = styled.div`
   height: 100%;
   overflow-y: auto;
 `;
+
 export const TabContent = styled.div`
   display: none;
   width: 100%;
   &.show {
     display: flex;
   }
+
+  &.addTime {
+    height: 100%;
+    flex-direction: column;
+  }
+`;
+
+export const TopSection = styled(Box)`
+  width: 100%;
+  flex: 1;
+  position: relative;
+`;
+
+export const BottomSection = styled.div`
+  width: 100%;
+  background: ${color.lighter};
+  height: 110px;
 `;
