@@ -1,10 +1,15 @@
 import React from 'react';
 import { create } from 'jss';
-import { StylesProvider, jssPreset } from '@material-ui/core/styles';
+import {
+  StylesProvider,
+  jssPreset,
+  ThemeProvider
+} from '@material-ui/core/styles';
 const jss = create({
   ...jssPreset(),
   insertionPoint: document.getElementById('jss-insertion-point')
 });
+import { theme } from '../theme';
 
 import AddAlarmIcon from '@material-ui/icons/AddAlarm';
 import SettingsIcon from '@material-ui/icons/Settings';
@@ -48,35 +53,37 @@ export default class Popup extends React.Component {
     const { menuItems } = this.state;
     const { selectedMenuItem } = this.state;
     return (
-      <StylesProvider jss={jss}>
-        <PopupContainer>
-          <Sidebar>
-            {menuItems.map(menuItem => {
-              return (
-                <StyledTooltip
-                  key={menuItem.id}
-                  title={menuItem.title}
-                  placement="right"
-                  className={selectedMenuItem === menuItem.id && 'selected'}
-                >
-                  <MenuItem
-                    onClick={() => {
-                      this.onMenuItemClick(menuItem.id);
-                    }}
+      <ThemeProvider theme={theme}>
+        <StylesProvider jss={jss}>
+          <PopupContainer>
+            <Sidebar>
+              {menuItems.map(menuItem => {
+                return (
+                  <StyledTooltip
+                    key={menuItem.id}
+                    title={menuItem.title}
+                    placement="right"
+                    className={selectedMenuItem === menuItem.id && 'selected'}
                   >
-                    {menuItem.icon}
-                  </MenuItem>
-                </StyledTooltip>
-              );
-            })}
-          </Sidebar>
-          <Content>
-            <TabContent className={selectedMenuItem === 'addTime' && 'show'}>
-              <TimeRow />
-            </TabContent>
-          </Content>
-        </PopupContainer>
-      </StylesProvider>
+                    <MenuItem
+                      onClick={() => {
+                        this.onMenuItemClick(menuItem.id);
+                      }}
+                    >
+                      {menuItem.icon}
+                    </MenuItem>
+                  </StyledTooltip>
+                );
+              })}
+            </Sidebar>
+            <Content>
+              <TabContent className={selectedMenuItem === 'addTime' && 'show'}>
+                <TimeRow />
+              </TabContent>
+            </Content>
+          </PopupContainer>
+        </StylesProvider>
+      </ThemeProvider>
     );
   }
 

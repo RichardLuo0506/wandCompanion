@@ -1,5 +1,6 @@
 import React from 'react';
 import { TimeRowContainer } from './styled-components';
+import MyTimePicker from './MyTimePicker';
 
 export default class TimeRow extends React.Component {
   constructor(props) {
@@ -9,7 +10,8 @@ export default class TimeRow extends React.Component {
   render() {
     return (
       <TimeRowContainer>
-        <h1>timerow</h1>
+        <MyTimePicker label="Start Time" defaultValue="09:00" />
+        <MyTimePicker label="End Time" defaultValue="12:00" />
       </TimeRowContainer>
     );
   }

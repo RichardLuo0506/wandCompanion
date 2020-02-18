@@ -28,6 +28,7 @@ module.exports = {
     'react/no-array-index-key': 2,
     'react/no-unused-state': 0,
     'react/no-unused-prop-types': 2,
+    'react/prop-types': 0,
     'prettier/prettier': [
       'error',
       {},
