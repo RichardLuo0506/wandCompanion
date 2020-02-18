@@ -15,6 +15,7 @@ import {
   MenuItem,
   Content
 } from './styled-components';
+import Branding from '../Branding/Branding.jsx';
 
 export default class Popup extends React.Component {
   constructor(props) {
@@ -60,7 +61,9 @@ export default class Popup extends React.Component {
               );
             })}
           </Sidebar>
-          <Content />
+          <Content>
+            <Branding />
+          </Content>
         </PopupContainer>
       </StylesProvider>
     );
