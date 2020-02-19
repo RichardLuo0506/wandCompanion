@@ -45,7 +45,8 @@ export default class Popup extends React.Component {
           title: 'Settings',
           icon: <SettingsIcon />
         }
-      ]
+      ],
+      hoveredAddTimeBtn: ''
     };
   }
 
@@ -54,8 +55,7 @@ export default class Popup extends React.Component {
   }
 
   render() {
-    const { menuItems } = this.state;
-    const { selectedMenuItem } = this.state;
+    const { menuItems, selectedMenuItem, hoveredAddTimeBtn } = this.state;
     return (
       <ThemeProvider theme={theme}>
         <MuiPickersUtilsProvider utils={DateFnsUtils}>
@@ -88,8 +88,10 @@ export default class Popup extends React.Component {
                 >
                   <TopSection boxShadow={2} />
                   <BottomSection>
-                    <TimeRow />
-                    <AddTimeBtnGrp />
+                    <TimeRow hoveredAddTimeBtn={hoveredAddTimeBtn} />
+                    <AddTimeBtnGrp
+                      onHover={this.addTimeBtnGrpHover.bind(this)}
+                    />
                   </BottomSection>
                 </TabContent>
               </Content>
@@ -106,5 +108,11 @@ export default class Popup extends React.Component {
 
   selectMenuItem(id) {
     this.setState({ selectedMenuItem: id });
+  }
+
+  addTimeBtnGrpHover(type) {
+    this.setState({
+      hoveredAddTimeBtn: type
+    });
   }
 }

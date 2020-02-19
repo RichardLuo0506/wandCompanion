@@ -26,7 +26,10 @@ export default function MyTextFieldTimePicker(props) {
 const useStyles = makeStyles(() => ({
   textField: {
     width: `100px`,
-    margin: 16
+    margin: `16px`,
+    '&:first-child': {
+      marginRight: 0
+    }
   }
 }));
 
