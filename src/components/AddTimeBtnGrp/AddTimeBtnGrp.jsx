@@ -15,6 +15,7 @@ export default class AddTimeBtnGrp extends React.Component {
       <GroupContainer>
         <AddWorkBtn
           onMouseOver={() => onHover('lunch')}
+          onMouseOut={() => onHover('')}
           color="primary"
           startIcon={<FastfoodIcon />}
         >
@@ -22,6 +23,7 @@ export default class AddTimeBtnGrp extends React.Component {
         </AddWorkBtn>
         <AddWorkBtn
           onMouseOver={() => onHover('work')}
+          onMouseOut={() => onHover('')}
           color="secondary"
           endIcon={<WorkIcon />}
         >
