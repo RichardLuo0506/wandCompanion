@@ -10,6 +10,7 @@ import TodayIcon from '@material-ui/icons/Today';
 import ViewWeekIcon from '@material-ui/icons/ViewWeek';
 import ListAltIcon from '@material-ui/icons/ListAlt';
 import DayTabPanel from '../DayTabPanel/DayTabPanel';
+import Branding from '../../Branding/Branding';
 
 export default function PopupTabsNavigation() {
   const classes = useStyles();
@@ -27,6 +28,7 @@ export default function PopupTabsNavigation() {
         onChange={handleChange}
         indicatorColor="primary"
       >
+        <Branding />
         <StyledTooltip title="Day" placement="right">
           <Tab className={classes.tab} icon={<TodayIcon />} />
         </StyledTooltip>
