@@ -25,7 +25,7 @@ import {
   BottomSection
 } from './styled-components';
 import TimeRow from '../TimeRow/TimeRow';
-// import Branding from '../Branding/Branding.jsx';
+import Branding from '../Branding/Branding.jsx';
 import AddTimeBtnGrp from '../AddTimeBtnGrp/AddTimeBtnGrp';
 
 export default class Popup extends React.Component {
@@ -63,6 +63,7 @@ export default class Popup extends React.Component {
           <StylesProvider jss={jss}>
             <PopupContainer>
               <Sidebar>
+                <Branding />
                 {menuItems.map(menuItem => {
                   return (
                     <StyledTooltip
