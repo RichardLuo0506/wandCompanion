@@ -12,27 +12,14 @@ const jss = create({
 import { theme } from '../theme';
 import DateFnsUtils from '@date-io/date-fns';
 import { MuiPickersUtilsProvider } from '@material-ui/pickers';
+import PopupTabsNavigation from './PopupTabsNavigation/PopupTabsNavigation';
 import AddAlarmIcon from '@material-ui/icons/AddAlarm';
 import SettingsIcon from '@material-ui/icons/Settings';
-import {
-  PopupContainer,
-  Sidebar,
-  MenuItem,
-  Content,
-  TabContent,
-  StyledTooltip,
-  TopSection,
-  BottomSection
-} from './styled-components';
-import TimeRow from '../TimeRow/TimeRow';
-import Branding from '../Branding/Branding.jsx';
-import AddTimeBtnGrp from '../AddTimeBtnGrp/AddTimeBtnGrp';
+import { PopupContainer } from './styled-components';
 
 export default class Popup extends React.Component {
   constructor(props) {
     super(props);
-
-    this.onMenuItemClick = this.onMenuItemClick.bind(this);
 
     this.state = {
       menuItems: [
@@ -56,56 +43,17 @@ export default class Popup extends React.Component {
   }
 
   render() {
-    const { menuItems, selectedMenuItem, hoveredAddTimeBtn } = this.state;
     return (
       <ThemeProvider theme={theme}>
         <MuiPickersUtilsProvider utils={DateFnsUtils}>
           <StylesProvider jss={jss}>
             <PopupContainer>
-              <Sidebar>
-                <Branding />
-                {menuItems.map(menuItem => {
-                  return (
-                    <StyledTooltip
-                      key={menuItem.id}
-                      title={menuItem.title}
-                      placement="right"
-                      className={selectedMenuItem === menuItem.id && 'selected'}
-                    >
-                      <MenuItem
-                        onClick={() => {
-                          this.onMenuItemClick(menuItem.id);
-                        }}
-                      >
-                        {menuItem.icon}
-                      </MenuItem>
-                    </StyledTooltip>
-                  );
-                })}
-              </Sidebar>
-              <Content>
-                <TabContent
-                  className={`${selectedMenuItem === 'addTime' &&
-                    'show'} addTime`}
-                >
-                  <TopSection boxShadow={2} />
-                  <BottomSection>
-                    <TimeRow hoveredAddTimeBtn={hoveredAddTimeBtn} />
-                    <AddTimeBtnGrp
-                      onHover={this.addTimeBtnGrpHover.bind(this)}
-                    />
-                  </BottomSection>
-                </TabContent>
-              </Content>
+              <PopupTabsNavigation />
             </PopupContainer>
           </StylesProvider>
         </MuiPickersUtilsProvider>
       </ThemeProvider>
     );
-  }
-
-  onMenuItemClick(id) {
-    alert(id);
   }
 
   selectMenuItem(id) {

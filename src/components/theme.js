@@ -1,5 +1,5 @@
 import { createMuiTheme } from '@material-ui/core/styles';
-import { color } from './common-styled-components';
+import { color, icon } from './common-styled-components';
 
 export const theme = createMuiTheme({
   palette: {
@@ -8,6 +8,12 @@ export const theme = createMuiTheme({
     },
     secondary: {
       main: color.blue
+    },
+    background: {
+      dark: color.dark
+    },
+    icon: {
+      onDark: icon.onDark
     }
   }
 });
