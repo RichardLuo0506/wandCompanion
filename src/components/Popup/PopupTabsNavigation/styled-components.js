@@ -38,7 +38,3 @@ export const MyTabs = withStyles(theme => ({
     justifyContent: `center`
   }
 }))(Tabs);
-
-export const disabled = styled.div`
-  disabled: true;
-`;

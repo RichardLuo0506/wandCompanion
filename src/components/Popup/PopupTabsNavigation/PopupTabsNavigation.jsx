@@ -22,6 +22,7 @@ export default function PopupTabsNavigation() {
 
   return (
     <PopupTabsNavigationContainer>
+      <Branding />
       <MyTabs
         orientation="vertical"
         value={value}
@@ -37,7 +38,6 @@ export default function PopupTabsNavigation() {
         <StyledTooltip title="History" placement="right">
           <Tab className={classes.tab} icon={<ListAltIcon />} />
         </StyledTooltip>
-        <Branding />
       </MyTabs>
       <DayTabPanel value={value} index={0} />
     </PopupTabsNavigationContainer>
