@@ -28,7 +28,6 @@ export default function PopupTabsNavigation() {
         onChange={handleChange}
         indicatorColor="primary"
       >
-        <Branding />
         <StyledTooltip title="Day" placement="right">
           <Tab className={classes.tab} icon={<TodayIcon />} />
         </StyledTooltip>
@@ -38,6 +37,7 @@ export default function PopupTabsNavigation() {
         <StyledTooltip title="History" placement="right">
           <Tab className={classes.tab} icon={<ListAltIcon />} />
         </StyledTooltip>
+        <Branding />
       </MyTabs>
       <DayTabPanel value={value} index={0} />
     </PopupTabsNavigationContainer>
