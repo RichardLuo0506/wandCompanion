@@ -1,5 +1,5 @@
 import styled from 'styled-components';
 
-export const TimeRowContainer = styled.div`
+export const TimeRowWrapper = styled.div`
   display: flex;
 `;

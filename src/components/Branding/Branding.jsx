@@ -1,13 +1,13 @@
 import React from 'react';
-import { BrandingContainer } from './styled-components';
+import { BrandingWrapper } from './styled-components';
 
 export default class Branding extends React.Component {
   render() {
     return (
-      <BrandingContainer>
+      <BrandingWrapper>
         <span>w</span>
         <span>C</span>
-      </BrandingContainer>
+      </BrandingWrapper>
     );
   }
 }
