@@ -1,5 +1,5 @@
 import React from 'react';
-import { GroupContainer, AddWorkBtn } from './styled-components';
+import { GroupWrapper, AddWorkBtn } from './styled-components';
 import FastfoodIcon from '@material-ui/icons/Fastfood';
 import WorkIcon from '@material-ui/icons/Work';
 import PropTypes from 'prop-types';
@@ -12,7 +12,7 @@ export default class AddTimeBtnGrp extends React.Component {
   render() {
     const { onHover } = this.props;
     return (
-      <GroupContainer>
+      <GroupWrapper>
         <AddWorkBtn
           onMouseOver={() => onHover('lunch')}
           onMouseOut={() => onHover('')}
@@ -29,7 +29,7 @@ export default class AddTimeBtnGrp extends React.Component {
         >
           Add Work
         </AddWorkBtn>
-      </GroupContainer>
+      </GroupWrapper>
     );
   }
 }

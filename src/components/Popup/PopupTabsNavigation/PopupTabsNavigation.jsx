@@ -2,7 +2,7 @@ import React from 'react';
 import Tab from '@material-ui/core/Tab';
 import {
   useStyles,
-  PopupTabsNavigationContainer,
+  PopupTabsNavigationWrapper,
   StyledTooltip,
   MyTabs
 } from './styled-components';
@@ -21,7 +21,7 @@ export default function PopupTabsNavigation() {
   };
 
   return (
-    <PopupTabsNavigationContainer>
+    <PopupTabsNavigationWrapper>
       <Branding />
       <MyTabs
         orientation="vertical"
@@ -40,6 +40,6 @@ export default function PopupTabsNavigation() {
         </StyledTooltip>
       </MyTabs>
       <DayTabPanel value={value} index={0} />
-    </PopupTabsNavigationContainer>
+    </PopupTabsNavigationWrapper>
   );
 }
