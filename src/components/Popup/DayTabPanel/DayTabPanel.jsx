@@ -32,6 +32,7 @@ export default class TabPanel extends React.Component {
     );
   }
 
+  // TODO: throttle this
   addTimeBtnGrpHover(type) {
     this.setState({
       hoveredAddTimeBtn: type

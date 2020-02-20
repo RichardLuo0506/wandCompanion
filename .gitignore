@@ -6,3 +6,5 @@ extension
 dev
 .vscode
 .DS_Store
+.intuitgithookrc
+yarn-error.log

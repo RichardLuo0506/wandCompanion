@@ -15,14 +15,14 @@ export default class NumberDisplay extends React.Component {
   }
 
   render() {
-    const { color } = this.props;
+    const { color, symbol, number, unit } = this.props;
     return (
       <NumberDisplayContainer>
         <Label>Total</Label>
         <NumberWrapper style={{ color }}>
-          <Symbol> + </Symbol>
-          <Number>45</Number>
-          <Unit>min</Unit>
+          <Symbol>{symbol}</Symbol>
+          <Number>{number}</Number>
+          <Unit>{unit}</Unit>
         </NumberWrapper>
       </NumberDisplayContainer>
     );
@@ -30,5 +30,8 @@ export default class NumberDisplay extends React.Component {
 }
 
 NumberDisplay.propTypes = {
-  color: PropTypes.string
+  color: PropTypes.string,
+  symbol: PropTypes.string,
+  number: PropTypes.number,
+  unit: PropTypes.string
 };

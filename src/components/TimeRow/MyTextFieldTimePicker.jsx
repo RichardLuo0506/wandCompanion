@@ -1,11 +1,16 @@
-import React from 'react';
+import React, { useCallback } from 'react';
+
 import TextField from '@material-ui/core/TextField';
 import { makeStyles } from '@material-ui/core/styles';
 import PropTypes from 'prop-types';
 
 export default function MyTextFieldTimePicker(props) {
-  const { label, defaultValue } = props;
+  const { id, label, defaultValue, onChange } = props;
   const classes = useStyles();
+
+  const memoOnChange = useCallback(e => {
+    onChange(id, e.target.value);
+  }, []);
 
   return (
     <TextField
@@ -13,6 +18,7 @@ export default function MyTextFieldTimePicker(props) {
       type="time"
       defaultValue={defaultValue}
       className={classes.textField}
+      onChange={memoOnChange}
       InputLabelProps={{
         shrink: true
       }}
