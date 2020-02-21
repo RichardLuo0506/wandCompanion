@@ -15,7 +15,7 @@ export const useStyles = makeStyles(theme => ({
   }
 }));
 
-export const PopupTabsNavigationWrapper = styled.div`
+export const PopupTabsNavigationRoot = styled.div`
   display: flex;
   flex-grow: 1;
   .MuiTabs-indicator {

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { color } from '../common-styled-components';
 
-export const BrandingWrapper = styled.div`
+export const BrandingRoot = styled.div`
   position: absolute;
   z-index: 1;
   top: 8px;
