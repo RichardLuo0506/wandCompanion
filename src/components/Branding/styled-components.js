@@ -9,7 +9,6 @@ export const BrandingContainer = styled.div`
   width: 64px;
   font-size: 28px;
   text-align: center;
-  cursor: default;
   user-select: none;
   letter-spacing: -2px;
   // "margin-left: -1px" fixes issue where "letter-spacing: -2px" only affects one child element
