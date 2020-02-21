@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { MyButton } from '../common-styled-components';
 
-export const GroupContainer = styled.div`
+export const GroupWrapper = styled.div`
   display: flex;
 `;
 
