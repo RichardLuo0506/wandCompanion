@@ -3,12 +3,13 @@ import { color } from '../common-styled-components';
 
 export const BrandingWrapper = styled.div`
   position: absolute;
+  z-index: 1;
   top: 8px;
   left: 0;
   width: 64px;
-  z-index: 1;
-  text-align: center;
   font-size: 28px;
+  text-align: center;
+  user-select: none;
   letter-spacing: -2px;
   // "margin-left: -1px" fixes issue where "letter-spacing: -2px" only affects one child element
   margin-left: -1px;
