@@ -1,5 +1,5 @@
 import React from 'react';
-import { TimeRowWrapper } from './styled-components';
+import { TimeRowRoot } from './styled-components';
 import MyTextFieldTimePicker from './MyTextFieldTimePicker';
 import NumberDisplay from './NumberDisplay/NumberDisplay';
 import PropTypes from 'prop-types';
@@ -42,7 +42,7 @@ export default class TimeRow extends React.Component {
     }
 
     return (
-      <TimeRowWrapper>
+      <TimeRowRoot>
         <MyTextFieldTimePicker
           id="startTime"
           label="Start Time"
@@ -66,7 +66,7 @@ export default class TimeRow extends React.Component {
           placeholder="12:00 PM"
           date={this.endDate}
         /> */}
-      </TimeRowWrapper>
+      </TimeRowRoot>
     );
   }
 
@@ -89,7 +89,7 @@ export default class TimeRow extends React.Component {
       new Date(2014, 6, 2, 12, 7, 59)
     );
     console.log('', diff);
-    debugger
+    debugger;
   }
 }
 
