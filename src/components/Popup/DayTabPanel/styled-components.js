@@ -5,8 +5,8 @@ import { color } from '../../common-styled-components';
 export const TabPanelWrapper = styled.div`
   flex: 1;
   position: relative;
-  flex-direction: column;
   display: flex;
+  flex-direction: column;
   &[hidden] {
     display: none;
   }
