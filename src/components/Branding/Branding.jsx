@@ -1,11 +1,13 @@
 import React from 'react';
 import { BrandingWrapper } from './styled-components';
 
-export default function Branding() {
+const Branding = () => {
   return (
     <BrandingWrapper>
       <span>w</span>
       <span>C</span>
     </BrandingWrapper>
   );
-}
+};
+
+export default Branding;
