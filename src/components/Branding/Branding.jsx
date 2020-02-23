@@ -1,12 +1,12 @@
 import React from 'react';
-import { BrandingWrapper } from './styled-components';
+import { BrandingRoot } from './styled-components';
 
 const Branding = () => {
   return (
-    <BrandingWrapper>
+    <BrandingRoot>
       <span>w</span>
       <span>C</span>
-    </BrandingWrapper>
+    </BrandingRoot>
   );
 };
 

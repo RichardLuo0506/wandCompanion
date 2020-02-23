@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import Box from '@material-ui/core/Box';
 import { color } from '../../common-styled-components';
 
-export const TabPanelWrapper = styled.div`
+export const DayTabPanelRoot = styled.div`
   flex: 1;
   position: relative;
   flex-direction: column;

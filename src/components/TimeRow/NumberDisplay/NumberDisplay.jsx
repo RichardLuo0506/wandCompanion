@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  NumberDisplayWrapper,
+  NumberDisplayRoot,
   Label,
   NumberWrapper,
   Symbol,
@@ -17,14 +17,14 @@ export default class NumberDisplay extends React.Component {
   render() {
     const { color, symbol, number, unit } = this.props;
     return (
-      <NumberDisplayWrapper>
+      <NumberDisplayRoot>
         <Label>Total</Label>
         <NumberWrapper style={{ color }}>
           <Symbol>{symbol}</Symbol>
           <Number>{number}</Number>
           <Unit>{unit}</Unit>
         </NumberWrapper>
-      </NumberDisplayWrapper>
+      </NumberDisplayRoot>
     );
   }
 }
