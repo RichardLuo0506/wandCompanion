@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
-  TabPanelWrapper,
+  DayTabPanelRoot,
   TopSection,
   BottomSection
 } from './styled-components';
@@ -22,13 +22,13 @@ export default class TabPanel extends React.Component {
     const { hoveredAddTimeBtn } = this.state;
 
     return (
-      <TabPanelWrapper role="tabpanel" hidden={value !== index} {...other}>
+      <DayTabPanelRoot role="tabpanel" hidden={value !== index} {...other}>
         <TopSection boxShadow={2} />
         <BottomSection>
           <TimeRow hoveredAddTimeBtn={hoveredAddTimeBtn} />
           <AddTimeBtnGrp onHover={this.addTimeBtnGrpHover.bind(this)} />
         </BottomSection>
-      </TabPanelWrapper>
+      </DayTabPanelRoot>
     );
   }
 
