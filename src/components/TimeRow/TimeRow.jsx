@@ -88,8 +88,6 @@ export default class TimeRow extends React.Component {
       new Date(2014, 6, 2, 12, 20, 0),
       new Date(2014, 6, 2, 12, 7, 59)
     );
-    console.log('', diff);
-    debugger;
   }
 }
 
