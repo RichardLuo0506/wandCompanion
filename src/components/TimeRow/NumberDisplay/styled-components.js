@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { theme } from '../../theme';
 
-export const NumberDisplayWrapper = styled.div`
+export const NumberDisplayRoot = styled.div`
   display: block;
   flex: 1;
   margin: 16px 16px 16px 0;

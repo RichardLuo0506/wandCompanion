@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {
-  TabPanelWrapper,
+  DayTabPanelRoot,
   TopSection,
   BottomSection
 } from './styled-components';
@@ -31,7 +31,7 @@ export default class TabPanel extends React.Component {
           <TimeRow hoveredAddTimeBtn={hoveredAddTimeBtn} />
           <AddTimeBtnGrp onHover={this.addTimeBtnGrpHover.bind(this)} />
         </BottomSection>
-      </TabPanelWrapper>
+      </DayTabPanelRoot>
     );
   }
 
