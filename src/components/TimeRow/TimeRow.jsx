@@ -5,7 +5,7 @@ import NumberDisplay from './NumberDisplay/NumberDisplay';
 import PropTypes from 'prop-types';
 import { theme } from '../theme';
 import { parse } from 'date-fns';
-import { differenceInMinutes } from 'date-fns/differenceInMinutes';
+import differenceInMinutes from 'date-fns/differenceInMinutes';
 // import MyKeyboardTimePicker from './MyKeyboardTimePicker';
 
 export default class TimeRow extends React.Component {
@@ -17,6 +17,11 @@ export default class TimeRow extends React.Component {
       startTime: '09:00',
       endTime: '12:00'
     };
+  }
+
+  componentDidUpdate() {
+    const timeDiff = this.calcTimeDiff();
+    const numDisplay = this.getNumDisplay(timeDiff);
   }
 
   render() {
@@ -70,24 +75,32 @@ export default class TimeRow extends React.Component {
     );
   }
 
-  onTimeChange(id, time) {
-    this.setState({
-      [id]: time
-    });
-
-    const timeDiff = this.calcTimeDiff();
-  }
-
   calcTimeDiff() {
     const { startTime, endTime } = this.state;
     const startDate = parse(startTime, 'HH:mm', new Date());
     const endDate = parse(endTime, 'HH:mm', new Date());
 
-    // const diff = differenceInMinutes(startDate, endDate);
-    var diff = differenceInMinutes(
-      new Date(2014, 6, 2, 12, 20, 0),
-      new Date(2014, 6, 2, 12, 7, 59)
-    );
+    const diff = differenceInMinutes(endDate, startDate);
+    return diff;
+  }
+
+  onTimeChange(id, time) {
+    this.setState({
+      [id]: time
+    });
+  }
+
+  getNumDisplay(timeDiff) {
+    if (timeDiff === 0) {
+      return { hour: 0 };
+    }
+
+    const sign = timeDiff > 0 ? '+' : '-';
+    if (timeDiff < 60) {
+      return { sign: sign, minute: timeDiff, unit2: 'min' };
+    } else {
+      const hour = 
+    }
   }
 }
 

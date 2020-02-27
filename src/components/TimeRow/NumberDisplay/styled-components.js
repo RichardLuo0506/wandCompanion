@@ -21,7 +21,7 @@ export const NumberWrapper = styled.div`
   color: ${theme.palette.text.primary};
 `;
 
-export const Symbol = styled.span`
+export const Sign = styled.span`
   width: 24px;
   text-align: right;
 `;

@@ -3,7 +3,7 @@ import {
   NumberDisplayRoot,
   Label,
   NumberWrapper,
-  Symbol,
+  Sign,
   Number,
   Unit
 } from './styled-components';
@@ -15,14 +15,16 @@ export default class NumberDisplay extends React.Component {
   }
 
   render() {
-    const { color, symbol, number, unit } = this.props;
+    const { color, sign, hour, minute, unit, unit2 } = this.props;
     return (
       <NumberDisplayRoot>
         <Label>Total</Label>
         <NumberWrapper style={{ color }}>
-          <Symbol>{symbol}</Symbol>
-          <Number>{number}</Number>
+          <Sign>{sign}</Sign>
+          <Number>{hour}</Number>
           <Unit>{unit}</Unit>
+          <Number>{minute}</Number>
+          <Unit>{unit2}</Unit>
         </NumberWrapper>
       </NumberDisplayRoot>
     );
@@ -31,7 +33,9 @@ export default class NumberDisplay extends React.Component {
 
 NumberDisplay.propTypes = {
   color: PropTypes.string,
-  symbol: PropTypes.string,
-  number: PropTypes.number,
-  unit: PropTypes.string
+  sign: PropTypes.string,
+  hour: PropTypes.number,
+  minute: PropTypes.number,
+  unit: PropTypes.string,
+  unit2: PropTypes.string
 };
