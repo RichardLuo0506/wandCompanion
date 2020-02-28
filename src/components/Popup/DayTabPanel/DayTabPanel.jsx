@@ -23,7 +23,7 @@ export default class TabPanel extends React.Component {
     const { hoveredAddTimeBtn } = this.state;
 
     return (
-      <TabPanelWrapper role="tabpanel" hidden={value !== index} {...other}>
+      <DayTabPanelRoot role="tabpanel" hidden={value !== index} {...other}>
         <TopSection boxShadow={2}>
           <Content />
         </TopSection>

@@ -1,55 +1,84 @@
 import styled from 'styled-components';
 import { MyButton } from '../common-styled-components';
+import { color, text } from '../common-styled-components';
 
 export const ContentRoot = styled.div`
   position: relative;
   width: 100%;
 `;
 
+export const Title = styled.div`
+  width: 100%;
+  padding: 16px;
+  font-size: 14px;
+  color: ${color.dark};
+`;
+
 export const ContentContainer = styled.div`
   position: relative;
-  width: 100%;
+  width: 106%;
   padding: 0px 16px;
   overflow: auto;
   height: 140px;
-  table {
-    width: 100%;
+  color: ${text.color};
+  .entries-headers {
+    position: fixed;
+    display: flex;
+    z-index: 1;
+    width: 322px;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+    padding-bottom: 4px;
+    max-height: 24px;
+    background: white;
+    color: rgba(0, 0, 0, 0.56);
+    div:nth-of-type(1),
+    div:nth-of-type(2) {
+      justify-content: left;
+    }
+    div:nth-of-type(3) {
+      text-align: center;
+    }
+    > * {
+      min-width: 57px;
+      justify-content: center;
+      flex: auto;
+    }
+  }
+  .entries {
+    position: relative;
+    width: 322px;
     display: flex;
     flex-direction: column;
-    tr {
+    padding-top: 24px;
+    div {
+      position: relative;
       display: flex;
       justify-content: space-between;
       align-items: center;
       font-size: 12px;
       padding-bottom: 4px;
+      max-height: 24px;
+      div:nth-of-type(1),
+      div:nth-of-type(2) {
+        justify-content: left;
+        color: rgba(0, 0, 0, 0.56);
+      }
       > * {
         min-width: 57px;
-        text-align: center;
+        justify-content: center;
         flex: auto;
       }
-      th:nth-of-type(1),
-      th:nth-of-type(2) {
-        text-align: left;
-      }
-      td:nth-of-type(1),
-      td:nth-of-type(2) {
-        text-align: left;
+    }
+    .non-button-icons {
+      color: gainsboro;
+      min-width: initial;
+      span {
+        margin: 0;
       }
     }
   }
-`;
-
-export const ContentHeader = styled.div`
-  width: 100%;
-  padding: 8px 16px;
-  font-size: 28px;
-`;
-
-export const Content = styled.div`
-  width: 100%;
-  padding: 16px;
-  border: green 1px solid;
-  overflow: auto;
 `;
 
 export const AddWorkBtn = styled(MyButton)`
