@@ -25,7 +25,7 @@ export const ContentContainer = styled.div`
     position: fixed;
     display: flex;
     z-index: 1;
-    width: 322px;
+    width: 297px;
     justify-content: space-between;
     align-items: center;
     font-size: 12px;
@@ -37,53 +37,68 @@ export const ContentContainer = styled.div`
     div:nth-of-type(2) {
       justify-content: left;
     }
+    div:nth-of-type(1) {
+      width: 25px;
+    }
     div:nth-of-type(3) {
-      text-align: center;
+      text-align: right;
     }
     > * {
-      min-width: 57px;
       justify-content: center;
       flex: auto;
     }
   }
   .entries {
     position: relative;
-    width: 322px;
+    width: 300px;
     display: flex;
     flex-direction: column;
     padding-top: 24px;
     div {
       position: relative;
+      // display: flex;
       display: flex;
       justify-content: space-between;
       align-items: center;
       font-size: 12px;
       padding-bottom: 4px;
       max-height: 24px;
+      > * {
+        // min-width: 57px;
+        min-width: 72px;
+        justify-content: center;
+        flex: auto;
+      }
       div:nth-of-type(1),
       div:nth-of-type(2) {
         justify-content: left;
-        color: rgba(0, 0, 0, 0.56);
+        color: rgba(0, 0, 0, 0.87);
       }
-      > * {
-        min-width: 57px;
-        justify-content: center;
-        flex: auto;
+      .edit-button {
+        flex-basis: 0;
+        min-width: initial;
       }
     }
     .non-button-icons {
       color: gainsboro;
-      min-width: initial;
       span {
         margin: 0;
+        // min-width: initial;
       }
+      .left-icon {
+        text-align: right;
+        padding-right: 12px;
+      }
+    }
+    .active-punch {
+      color: rgba(0, 0, 0, 0.87);
     }
   }
 `;
 
 export const AddWorkBtn = styled(MyButton)`
   color: gainsboro;
-  min-width: initial;
+  // min-width: initial;
   span {
     margin: 0;
   }

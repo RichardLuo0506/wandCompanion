@@ -1,5 +1,5 @@
 import React from 'react';
-import { AddWorkBtn } from './styled-components';
+import IconButton from '@material-ui/core/IconButton';
 import WorkIcon from '@material-ui/icons/Work';
 import FastfoodIcon from '@material-ui/icons/Fastfood';
 import CreateIcon from '@material-ui/icons/Create';
@@ -106,15 +106,28 @@ export default class Content extends React.Component {
                 <div key={`${userPunch.in} + ${Math.random()}`}>
                   <div>{userPunch.in}</div>
                   <div>{userPunch.out}</div>
-                  <div className='non-button-icons'>
-                    <WorkIcon />
-                  </div>
-                  <div className='non-button-icons'>
-                   <FastfoodIcon />
-                  </div>
-                  <div>
-                    <AddWorkBtn startIcon={<CreateIcon />} />
-                  </div>
+                  {userPunch.work ? (
+                    <div className="non-button-icons">
+                      <span className="active-punch left-icon">
+                        <WorkIcon />
+                      </span>
+                      <span>
+                        <FastfoodIcon />
+                      </span>
+                    </div>
+                  ) : (
+                    <div className="non-button-icons">
+                      <span className="left-icon">
+                        <WorkIcon />
+                      </span>
+                      <span className="active-punch">
+                        <FastfoodIcon />
+                      </span>
+                    </div>
+                  )}
+                  <IconButton className="edit-button" size="small">
+                    <CreateIcon />
+                  </IconButton>
                 </div>
               );
             })}
