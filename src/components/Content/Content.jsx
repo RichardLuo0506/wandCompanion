@@ -4,85 +4,80 @@ import WorkIcon from '@material-ui/icons/Work';
 import FastfoodIcon from '@material-ui/icons/Fastfood';
 import CreateIcon from '@material-ui/icons/Create';
 
-import { ContentRoot, Title, ContentContainer } from './styled-components';
+import {
+  ContentRoot,
+  Title,
+  ContentContainer,
+  Entries,
+  EntriesHeaders
+} from './styled-components';
 
 export default class Content extends React.Component {
   constructor(props) {
     super(props);
     const date = new Date();
 
-    const formatAMPM = date => {
-      let hours = date.getHours();
-      let minutes = date.getMinutes();
-      const ampm = hours >= 12 ? 'pm' : 'am';
-      hours = hours % 12;
-      hours = hours ? hours : 12; // the hour '0' should be '12'
-      minutes = minutes < 10 ? '0' + minutes : minutes;
-      const strTime = hours + ':' + minutes + ' ' + ampm;
-      return strTime;
-    };
-
     this.state = {
       userPunches: [
         {
-          in: formatAMPM(date),
-          out: formatAMPM(date),
-          work: true,
-          lunch: false
+          in: '9:00am',
+          out: '--',
+          type: 'Work'
         },
         {
-          in: formatAMPM(date),
-          out: formatAMPM(date),
-          work: true,
-          lunch: false
+          in: '--',
+          out: '12:00pm',
+          type: 'Lunch'
         },
         {
-          in: formatAMPM(date),
-          out: formatAMPM(date),
-          work: true,
-          lunch: false
+          in: '1:00pm',
+          out: '--',
+          type: 'Lunch'
         },
         {
-          in: formatAMPM(date),
-          out: formatAMPM(date),
-          work: true,
-          lunch: false
+          in: '--',
+          out: '5:00',
+          type: 'Work'
         },
         {
-          in: formatAMPM(date),
-          out: formatAMPM(date),
-          work: true,
-          lunch: false
+          in: '9:00am',
+          out: '--',
+          type: 'Work'
         },
         {
-          in: formatAMPM(date),
-          out: formatAMPM(date),
-          work: true,
-          lunch: false
+          in: '--',
+          out: '12:00pm',
+          type: 'Lunch'
         },
         {
-          in: formatAMPM(date),
-          out: formatAMPM(date),
-          work: true,
-          lunch: false
+          in: '1:00pm',
+          out: '--',
+          type: 'Lunch'
         },
         {
-          in: formatAMPM(date),
-          out: formatAMPM(date),
-          work: true,
-          lunch: false
+          in: '--',
+          out: '5:00pm',
+          type: 'Work'
         },
         {
-          in: formatAMPM(date),
-          out: formatAMPM(date),
-          work: true,
-          lunch: false
+          in: '9:00am',
+          out: '--',
+          type: 'Work'
         },
         {
-          in: formatAMPM(date),
-          out: formatAMPM(date),
-          work: true,
-          lunch: false
+          in: '--',
+          out: '12:00pm',
+          type: 'Lunch'
+        },
+        {
+          in: '1:00pm',
+          out: '--',
+          type: 'Lunch'
+        },
+        {
+          in: '--',
+          out: '5:00pm',
+          type: 'Work'
         }
       ]
     };
@@ -93,20 +88,19 @@ export default class Content extends React.Component {
       <ContentRoot>
         <Title>Today</Title>
         <ContentContainer>
-          <div className="entries-headers">
+          <EntriesHeaders>
             <div>In</div>
             <div>Out</div>
-            <span />
-            <span />
+            <div />
             <div>Edit</div>
-          </div>
-          <div className="entries">
+          </EntriesHeaders>
+          <Entries>
             {this.state.userPunches.map(userPunch => {
               return (
                 <div key={`${userPunch.in} + ${Math.random()}`}>
                   <div>{userPunch.in}</div>
                   <div>{userPunch.out}</div>
-                  {userPunch.work ? (
+                  {userPunch.type === 'Work' ? (
                     <div className="non-button-icons">
                       <span className="active-punch left-icon">
                         <WorkIcon />
@@ -131,7 +125,7 @@ export default class Content extends React.Component {
                 </div>
               );
             })}
-          </div>
+          </Entries>
         </ContentContainer>
       </ContentRoot>
     );

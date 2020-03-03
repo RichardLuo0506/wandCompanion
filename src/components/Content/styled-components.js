@@ -14,80 +14,36 @@ export const Title = styled.div`
   color: ${color.dark};
 `;
 
+export const EntriesHeaders = styled.div`
+  display: flex;
+  z-index: 1;
+  font-size: 12px;
+  padding-bottom: 4px;
+  background: white;
+  color: rgba(0, 0, 0, 0.56);
+  div {
+    width: 100%;
+  }
+  div:last-of-type {
+    text-align: right;
+    padding-right: 4px;
+  }
+`;
+
 export const ContentContainer = styled.div`
   position: relative;
-  width: 106%;
   padding: 0px 16px;
   overflow: auto;
   height: 140px;
   color: ${text.color};
-  .entries-headers {
-    position: fixed;
-    display: flex;
-    z-index: 1;
-    width: 297px;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 12px;
-    padding-bottom: 4px;
-    max-height: 24px;
-    background: white;
-    color: rgba(0, 0, 0, 0.56);
-    div:nth-of-type(1),
-    div:nth-of-type(2) {
-      justify-content: left;
-    }
-    div:nth-of-type(1) {
-      width: 25px;
-    }
-    div:nth-of-type(3) {
-      text-align: right;
-    }
-    > * {
-      justify-content: center;
-      flex: auto;
-    }
   }
-  .entries {
-    position: relative;
-    width: 300px;
-    display: flex;
-    flex-direction: column;
-    padding-top: 24px;
-    div {
-      position: relative;
-      // display: flex;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 12px;
-      padding-bottom: 4px;
-      max-height: 24px;
-      > * {
-        // min-width: 57px;
-        min-width: 72px;
-        justify-content: center;
-        flex: auto;
-      }
-      div:nth-of-type(1),
-      div:nth-of-type(2) {
-        justify-content: left;
-        color: rgba(0, 0, 0, 0.87);
-      }
-      .edit-button {
-        flex-basis: 0;
-        min-width: initial;
-      }
-    }
     .non-button-icons {
       color: gainsboro;
       span {
         margin: 0;
-        // min-width: initial;
-      }
-      .left-icon {
-        text-align: right;
-        padding-right: 12px;
+        svg {
+          font-size: 20px;
+        }
       }
     }
     .active-punch {
@@ -96,9 +52,24 @@ export const ContentContainer = styled.div`
   }
 `;
 
+export const Entries = styled.div`
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    div {
+      position: relative;
+      display: flex;
+      width: 100%;
+      font-size: 12px;
+      div:nth-of-type(1),
+      div:nth-of-type(2) {
+        max-width: 72px;
+        color: rgba(0, 0, 0, 0.87);
+      }
+    `;
+
 export const AddWorkBtn = styled(MyButton)`
   color: gainsboro;
-  // min-width: initial;
   span {
     margin: 0;
   }
