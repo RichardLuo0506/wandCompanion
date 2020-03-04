@@ -15,13 +15,14 @@ export default class TimeRow extends React.Component {
 
     this.state = {
       startTime: '09:00',
-      endTime: '12:00'
+      endTime: '12:00',
+      numDisplay: {},
+      timeDiff: 0
     };
   }
 
   componentDidUpdate() {
-    const timeDiff = this.calcTimeDiff();
-    const numDisplay = this.getNumDisplay(timeDiff);
+    this.updateNumberDisplay();
   }
 
   render() {
@@ -34,7 +35,7 @@ export default class TimeRow extends React.Component {
     // this.endDate = new Date(year, month, date, 12, 0, 0);
 
     const { hoveredAddTimeBtn } = this.props;
-    const { startTime, endTime } = this.state;
+    const { startTime, endTime, timeDiff } = this.state;
 
     if (hoveredAddTimeBtn) {
       if (hoveredAddTimeBtn === 'lunch') {
@@ -60,7 +61,7 @@ export default class TimeRow extends React.Component {
           defaultValue={endTime}
           onChange={this.onTimeChange}
         />
-        <NumberDisplay color={this.numDisplayColor} />
+        <NumberDisplay color={this.numDisplayColor} timeDiff={timeDiff} />
         {/* <MyKeyboardTimePicker
           label="Start Time"
           placeholder="09:00 AM"
@@ -90,16 +91,11 @@ export default class TimeRow extends React.Component {
     });
   }
 
-  getNumDisplay(timeDiff) {
-    if (timeDiff === 0) {
-      return { hour: 0 };
-    }
-
-    const sign = timeDiff > 0 ? '+' : '-';
-    if (timeDiff < 60) {
-      return { sign: sign, minute: timeDiff, unit2: 'min' };
-    } else {
-      const hour = 
+  updateNumberDisplay() {
+    const { timeDiff: oldTimeDiff } = this.state;
+    const newTimeDiff = this.calcTimeDiff();
+    if (oldTimeDiff !== newTimeDiff) {
+      this.setState({ ...this.state, timeDiff: this.calcTimeDiff() });
     }
   }
 }

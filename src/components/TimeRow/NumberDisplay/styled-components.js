@@ -16,21 +16,17 @@ export const Label = styled.div`
 
 export const NumberWrapper = styled.div`
   display: flex;
-  align-items: center;
+  align-items: baseline;
   justify-content: center;
   color: ${theme.palette.text.primary};
 `;
 
 export const Sign = styled.span`
-  width: 24px;
-  text-align: right;
+  align-self: center;
 `;
 export const Number = styled.span`
   font-size: 20px;
-  margin: 0 4px;
+  margin: 0 1px 0 4px;
   font-weight: normal;
 `;
-export const Unit = styled.span`
-  width: 24px;
-  text-align: left;
-`;
+export const Unit = styled.span``;
