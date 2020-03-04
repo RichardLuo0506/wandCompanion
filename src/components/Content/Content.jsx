@@ -9,78 +9,108 @@ import {
   Title,
   ContentContainer,
   Entries,
-  EntriesHeaders
+  EntriesHeaders,
+  ToggleButtonsContainer,
+  ActiveToggle
 } from './styled-components';
 
 export default class Content extends React.Component {
   constructor(props) {
     super(props);
-    const date = new Date();
 
     this.state = {
       userPunches: [
         {
           in: '9:00am',
           out: '--',
-          type: 'Work'
+          type: 'work'
         },
         {
           in: '--',
           out: '12:00pm',
-          type: 'Lunch'
+          type: 'lunch'
         },
         {
           in: '1:00pm',
           out: '--',
-          type: 'Lunch'
+          type: 'lunch'
         },
         {
           in: '--',
           out: '5:00',
-          type: 'Work'
+          type: 'work'
         },
         {
           in: '9:00am',
           out: '--',
-          type: 'Work'
+          type: 'work'
         },
         {
           in: '--',
           out: '12:00pm',
-          type: 'Lunch'
+          type: 'lunch'
         },
         {
           in: '1:00pm',
           out: '--',
-          type: 'Lunch'
+          type: 'lunch'
         },
         {
           in: '--',
           out: '5:00pm',
-          type: 'Work'
+          type: 'work'
         },
         {
           in: '9:00am',
           out: '--',
-          type: 'Work'
+          type: 'work'
         },
         {
           in: '--',
           out: '12:00pm',
-          type: 'Lunch'
+          type: 'lunch'
         },
         {
           in: '1:00pm',
           out: '--',
-          type: 'Lunch'
+          type: 'lunch'
         },
         {
           in: '--',
           out: '5:00pm',
-          type: 'Work'
+          type: 'work'
         }
       ]
     };
+
+    this.handleToggle = this.handleToggle.bind(this);
+  }
+  // ? this.setState({ [this.state.userPunches[e].type]: 'lunch' })
+  // : this.setState({ [this.state.userPunches[e].type]: 'work' });
+  handleToggle(id) {
+    const currentPunch = this.state.userPunches[id];
+    console.log(currentPunch);
+
+    // this.setState(
+    //   () => ({
+    //     ...this.state.userPunches,
+    //     type: 'lunch'
+    //   }),
+    //   console.log(currentPunch)
+    // );
+
+    this.setState(
+      prev => ({
+        userPunches: prev.userPunches.map(punch =>
+          punch.type === 'work' ? { ...punch, type: 'lunch' } : punch
+        )
+      }),
+      console.log(currentPunch)
+    );
+
+    // currentPunch === 'work'
+    //   ? this.setState({ currentPunch: 'lunch' })
+    //   : console.log('its lunch');
   }
 
   render() {
@@ -95,30 +125,23 @@ export default class Content extends React.Component {
             <div>Edit</div>
           </EntriesHeaders>
           <Entries>
-            {this.state.userPunches.map(userPunch => {
+            {this.state.userPunches.map((userPunch, index) => {
               return (
-                <div key={`${userPunch.in} + ${Math.random()}`}>
+                <div key={index}>
                   <div>{userPunch.in}</div>
                   <div>{userPunch.out}</div>
-                  {userPunch.type === 'Work' ? (
-                    <div className="non-button-icons">
-                      <span className="active-punch left-icon">
-                        <WorkIcon />
-                      </span>
-                      <span>
-                        <FastfoodIcon />
-                      </span>
-                    </div>
-                  ) : (
-                    <div className="non-button-icons">
-                      <span className="left-icon">
-                        <WorkIcon />
-                      </span>
-                      <span className="active-punch">
-                        <FastfoodIcon />
-                      </span>
-                    </div>
-                  )}
+                  <ToggleButtonsContainer>
+                    <ActiveToggle onClick={() => this.handleToggle(index)}>
+                      <WorkIcon
+                        className={userPunch.type === 'work' ? 'active' : ''}
+                      />
+                    </ActiveToggle>
+                    <ActiveToggle onClick={() => this.handleToggle(index)}>
+                      <FastfoodIcon
+                        className={userPunch.type === 'lunch' ? 'active' : ''}
+                      />
+                    </ActiveToggle>
+                  </ToggleButtonsContainer>
                   <IconButton className="edit-button" size="small">
                     <CreateIcon />
                   </IconButton>

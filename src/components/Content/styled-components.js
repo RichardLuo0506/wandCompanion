@@ -20,8 +20,8 @@ export const EntriesHeaders = styled.div`
   font-size: 12px;
   padding-bottom: 4px;
   background: white;
-  color: rgba(0, 0, 0, 0.56);
-  div {
+  color: ${text.colorLight};
+  > div {
     width: 100%;
   }
   div:last-of-type {
@@ -33,43 +33,46 @@ export const EntriesHeaders = styled.div`
 export const ContentContainer = styled.div`
   position: relative;
   padding: 0px 16px;
-  overflow: auto;
+  overflow-y: auto;
   height: 140px;
   color: ${text.color};
+`;
+
+export const ToggleButtonsContainer = styled.div`
+  span:nth-of-type(2) {
+    padding-left: 4px;
   }
-    .non-button-icons {
-      color: gainsboro;
-      span {
-        margin: 0;
-        svg {
-          font-size: 20px;
-        }
-      }
-    }
-    .active-punch {
-      color: rgba(0, 0, 0, 0.87);
-    }
+`;
+
+export const ActiveToggle = styled.div`
+  margin: 0px;
+  svg {
+    color: ${color.inactive};
+    font-size: 20px;
+  }
+  svg.active {
+    color: ${text.color};
   }
 `;
 
 export const Entries = styled.div`
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  div {
     position: relative;
     display: flex;
-    flex-direction: column;
-    div {
-      position: relative;
-      display: flex;
-      width: 100%;
-      font-size: 12px;
-      div:nth-of-type(1),
-      div:nth-of-type(2) {
-        max-width: 72px;
-        color: rgba(0, 0, 0, 0.87);
-      }
-    `;
+    width: 100%;
+    font-size: 12px;
+    div:nth-of-type(1),
+    div:nth-of-type(2) {
+      max-width: 25%;
+      color: ${text.color};
+    }
+  `;
 
 export const AddWorkBtn = styled(MyButton)`
-  color: gainsboro;
+  color: ${text.colorLight};
   span {
     margin: 0;
   }

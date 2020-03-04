@@ -10,11 +10,13 @@ export const color = {
   light: `#dfe0e7`,
   lighter: `#edeef5`,
   orange: `#ff9600`,
-  blue: `#007afe`
+  blue: `#007afe`,
+  inactive: 'gainsboro'
 };
 
 export const text = {
   color: `rgba(0, 0, 0, 0.87)`,
+  colorLight: `rgba(0, 0, 0, 0.56)`,
   size: {
     md: '14px'
   }
