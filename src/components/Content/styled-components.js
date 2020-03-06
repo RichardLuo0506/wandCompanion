@@ -5,6 +5,16 @@ import { color, text } from '../common-styled-components';
 export const ContentRoot = styled.div`
   position: relative;
   width: 100%;
+  div::-webkit-scrollbar {
+    display: none;
+  }
+  //-moz-webkit solution removed. Current solution below
+  @-moz-document url-prefix() {
+    > div:nth-of-type(2) {
+      overflow-x: hidden;
+      margin-right: -16px;
+    }
+  }
 `;
 
 export const Title = styled.div`
@@ -21,12 +31,22 @@ export const EntriesHeaders = styled.div`
   padding-bottom: 4px;
   background: white;
   color: ${text.colorLight};
-  > div {
-    width: 100%;
+  div:nth-of-type(1),
+  div:nth-of-type(2) {
+    width: 22.5%;
   }
-  div:last-of-type {
+  div:nth-of-type(3) {
+    width: 25%;
+  }
+  div:nth-of-type(4) {
+    width: 15%;
+    text-align: center;
+    margin-right: 3px;
+  }
+  div:nth-of-type(5) {
+    width: 15%;
     text-align: right;
-    padding-right: 4px;
+    padding-right: 3px;
   }
 `;
 
@@ -39,8 +59,8 @@ export const ContentContainer = styled.div`
 `;
 
 export const ToggleButtonsContainer = styled.div`
-  span:nth-of-type(2) {
-    padding-left: 4px;
+  div:nth-of-type(2) {
+    padding-left: 8px;
   }
 `;
 
@@ -50,8 +70,11 @@ export const ActiveToggle = styled.div`
     color: ${color.inactive};
     font-size: 20px;
   }
-  svg.active {
-    color: ${text.color};
+  svg.work-active {
+    color: ${color.orange};
+  }
+  svg.lunch-active {
+    color: ${color.blue};
   }
 `;
 
@@ -63,13 +86,34 @@ export const Entries = styled.div`
     position: relative;
     display: flex;
     width: 100%;
+    align-items: center;
     font-size: 12px;
     div:nth-of-type(1),
     div:nth-of-type(2) {
-      max-width: 25%;
       color: ${text.color};
     }
+    div:nth-of-type(1),
+    div:nth-of-type(2) {
+      width: 22.5%;
+    }
+    div:nth-of-type(3) {
+      width: 25%;
+    }
+    div:nth-of-type(4),
+    div:nth-of-type(5) {
+      width: 15%;
+    }
+    div:nth-of-type(4){
+      justify-content: center;
+    }
+    div:nth-of-type(5) {
+      justify-content:flex-end;
+    }
   `;
+
+export const IconButtonWrapper = styled.div`
+  justify-content: flex-end;
+`;
 
 export const AddWorkBtn = styled(MyButton)`
   color: ${text.colorLight};

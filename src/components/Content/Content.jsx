@@ -3,6 +3,7 @@ import IconButton from '@material-ui/core/IconButton';
 import WorkIcon from '@material-ui/icons/Work';
 import FastfoodIcon from '@material-ui/icons/Fastfood';
 import CreateIcon from '@material-ui/icons/Create';
+import DeleteIcon from '@material-ui/icons/Delete';
 
 import {
   ContentRoot,
@@ -11,7 +12,8 @@ import {
   Entries,
   EntriesHeaders,
   ToggleButtonsContainer,
-  ActiveToggle
+  ActiveToggle,
+  IconButtonWrapper
 } from './styled-components';
 
 export default class Content extends React.Component {
@@ -22,61 +24,46 @@ export default class Content extends React.Component {
       userPunches: [
         {
           in: '9:00am',
-          out: '--',
-          type: 'work'
-        },
-        {
-          in: '--',
           out: '12:00pm',
-          type: 'lunch'
+          type: 'work'
         },
         {
           in: '1:00pm',
-          out: '--',
+          out: '2:00pm',
           type: 'lunch'
         },
         {
-          in: '--',
-          out: '5:00',
-          type: 'work'
-        },
-        {
-          in: '9:00am',
-          out: '--',
-          type: 'work'
-        },
-        {
-          in: '--',
-          out: '12:00pm',
-          type: 'lunch'
-        },
-        {
-          in: '1:00pm',
-          out: '--',
-          type: 'lunch'
-        },
-        {
-          in: '--',
+          in: '3:00pm',
           out: '5:00pm',
           type: 'work'
         },
         {
           in: '9:00am',
-          out: '--',
+          out: '12:00pm',
           type: 'work'
         },
         {
-          in: '--',
-          out: '12:00pm',
+          in: '1:00pm',
+          out: '2:00pm',
           type: 'lunch'
+        },
+        {
+          in: '3:00pm',
+          out: '5:00pm',
+          type: 'work'
+        },
+        {
+          in: '9:00am',
+          out: '12:00pm',
+          type: 'work'
         },
         {
           in: '1:00pm',
-          out: '--',
+          out: '2:00pm',
           type: 'lunch'
         },
         {
-          in: '--',
+          in: '3:00pm',
           out: '5:00pm',
           type: 'work'
         }
@@ -85,32 +72,17 @@ export default class Content extends React.Component {
 
     this.handleToggle = this.handleToggle.bind(this);
   }
-  // ? this.setState({ [this.state.userPunches[e].type]: 'lunch' })
-  // : this.setState({ [this.state.userPunches[e].type]: 'work' });
   handleToggle(id) {
-    const currentPunch = this.state.userPunches[id];
-    console.log(currentPunch);
-
-    // this.setState(
-    //   () => ({
-    //     ...this.state.userPunches,
-    //     type: 'lunch'
-    //   }),
-    //   console.log(currentPunch)
-    // );
-
-    this.setState(
-      prev => ({
-        userPunches: prev.userPunches.map(punch =>
-          punch.type === 'work' ? { ...punch, type: 'lunch' } : punch
-        )
-      }),
-      console.log(currentPunch)
-    );
-
-    // currentPunch === 'work'
-    //   ? this.setState({ currentPunch: 'lunch' })
-    //   : console.log('its lunch');
+    var prevState = Object.assign({}, this.state);
+    //Returns the only the userPunches array from previous state
+    prevState.userPunches = prevState.userPunches.slice();
+    //Each time prevState.userPunches[id] is called will create a new object with all properties of userPunches[id] Object.assign({}, someObject) avoid mutating state directly.
+    prevState.userPunches[id] = Object.assign({}, prevState.userPunches[id]);
+    prevState.userPunches[id].type === 'work'
+      ? (prevState.userPunches[id].type = 'lunch')
+      : (prevState.userPunches[id].type = 'work');
+    // will update state with new userPunches object
+    this.setState(prevState);
   }
 
   render() {
@@ -119,9 +91,10 @@ export default class Content extends React.Component {
         <Title>Today</Title>
         <ContentContainer>
           <EntriesHeaders>
-            <div>In</div>
-            <div>Out</div>
+            <div>Start</div>
+            <div>End</div>
             <div />
+            <div>Remove</div>
             <div>Edit</div>
           </EntriesHeaders>
           <Entries>
@@ -133,18 +106,29 @@ export default class Content extends React.Component {
                   <ToggleButtonsContainer>
                     <ActiveToggle onClick={() => this.handleToggle(index)}>
                       <WorkIcon
-                        className={userPunch.type === 'work' ? 'active' : ''}
+                        className={
+                          userPunch.type === 'work' ? 'work-active' : ''
+                        }
                       />
                     </ActiveToggle>
                     <ActiveToggle onClick={() => this.handleToggle(index)}>
                       <FastfoodIcon
-                        className={userPunch.type === 'lunch' ? 'active' : ''}
+                        className={
+                          userPunch.type === 'lunch' ? 'lunch-active' : ''
+                        }
                       />
                     </ActiveToggle>
                   </ToggleButtonsContainer>
-                  <IconButton className="edit-button" size="small">
-                    <CreateIcon />
-                  </IconButton>
+                  <IconButtonWrapper>
+                    <IconButton className="edit-button" size="small">
+                      <DeleteIcon />
+                    </IconButton>
+                  </IconButtonWrapper>
+                  <IconButtonWrapper>
+                    <IconButton className="edit-button" size="small">
+                      <CreateIcon />
+                    </IconButton>
+                  </IconButtonWrapper>
                 </div>
               );
             })}
