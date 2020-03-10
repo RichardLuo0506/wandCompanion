@@ -9,7 +9,6 @@ import {
 } from './styled-components';
 
 import { color as themeColor } from '../../common-styled-components';
-// import PropTypes from 'prop-types';
 
 const NumberDisplay = props => {
   const { color, timeDiff } = props;
@@ -52,12 +51,3 @@ const NumberDisplay = props => {
 };
 
 export default NumberDisplay;
-
-// NumberDisplay.propTypes = {
-//   color: PropTypes.string,
-//   sign: PropTypes.string,
-//   hour: PropTypes.number,
-//   minute: PropTypes.number,
-//   unit: PropTypes.string,
-//   unit2: PropTypes.string
-// };

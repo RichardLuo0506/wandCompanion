@@ -6,7 +6,6 @@ import PropTypes from 'prop-types';
 import { theme } from '../theme';
 import { parse } from 'date-fns';
 import differenceInMinutes from 'date-fns/differenceInMinutes';
-// import MyKeyboardTimePicker from './MyKeyboardTimePicker';
 
 export default class TimeRow extends React.Component {
   constructor(props) {
@@ -26,14 +25,6 @@ export default class TimeRow extends React.Component {
   }
 
   render() {
-    // const now = new Date();
-    // const year = now.getFullYear();
-    // const month = now.getMonth();
-    // const date = now.getDate();
-
-    // this.startDate = new Date(year, month, date, 9, 0, 0);
-    // this.endDate = new Date(year, month, date, 12, 0, 0);
-
     const { hoveredAddTimeBtn } = this.props;
     const { startTime, endTime, timeDiff } = this.state;
 
@@ -62,16 +53,6 @@ export default class TimeRow extends React.Component {
           onChange={this.onTimeChange}
         />
         <NumberDisplay color={this.numDisplayColor} timeDiff={timeDiff} />
-        {/* <MyKeyboardTimePicker
-          label="Start Time"
-          placeholder="09:00 AM"
-          date={this.startDate}
-        />
-        <MyKeyboardTimePicker
-          label="End Time"
-          placeholder="12:00 PM"
-          date={this.endDate}
-        /> */}
       </TimeRowRoot>
     );
   }
