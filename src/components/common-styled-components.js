@@ -10,7 +10,8 @@ export const color = {
   light: `#dfe0e7`,
   lighter: `#edeef5`,
   orange: `#ff9600`,
-  blue: `#007afe`
+  blue: `#007afe`,
+  red: `#f44336`
 };
 
 export const text = {
