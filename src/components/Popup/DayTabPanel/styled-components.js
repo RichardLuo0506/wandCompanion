@@ -16,10 +16,11 @@ export const TopSection = styled(Box)`
   width: 100%;
   flex: 1;
   position: relative;
+  // height: 120px;
 `;
 
 export const BottomSection = styled.div`
   width: 100%;
   background: ${color.lighter};
-  height: 110px;
+  // height: 110px;
 `;

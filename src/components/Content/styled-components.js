@@ -8,7 +8,7 @@ export const ContentRoot = styled.div`
   div::-webkit-scrollbar {
     display: none;
   }
-  //-moz-webkit solution removed. Current solution below
+  // *-moz-webkit solution depreciated in newer versions of Firefox. Current solution below
   @-moz-document url-prefix() {
     > div:nth-of-type(2) {
       overflow-x: hidden;
@@ -27,54 +27,45 @@ export const Title = styled.div`
 export const EntriesHeaders = styled.div`
   display: flex;
   z-index: 1;
+  width: 100%;
+  padding: 0 16px;
   font-size: 12px;
-  padding-bottom: 4px;
   background: white;
   color: ${text.colorLight};
-  div:nth-of-type(1),
-  div:nth-of-type(2) {
-    width: 22.5%;
-  }
-  div:nth-of-type(3) {
-    width: 25%;
-  }
-  div:nth-of-type(4) {
-    width: 15%;
-    text-align: center;
-    margin-right: 3px;
-  }
-  div:nth-of-type(5) {
-    width: 15%;
-    text-align: right;
-    padding-right: 3px;
+  div {
+    flex: 25%;
   }
 `;
 
 export const ContentContainer = styled.div`
   position: relative;
-  padding: 0px 16px;
+  padding: 0 16px;
   overflow-y: auto;
   height: 140px;
   color: ${text.color};
 `;
 
 export const ToggleButtonsContainer = styled.div`
+  div:nth-of-type(1) {
+    justify-content: flex-end;
+  }
   div:nth-of-type(2) {
-    padding-left: 8px;
+    padding-left: 4px;
   }
 `;
 
 export const ActiveToggle = styled.div`
-  margin: 0px;
+  margin: 0;
+  cursor: pointer;
   svg {
     color: ${color.inactive};
     font-size: 20px;
-  }
-  svg.work-active {
-    color: ${color.orange};
-  }
-  svg.lunch-active {
-    color: ${color.blue};
+    &.work-active {
+      color: ${color.orange};
+    }
+    &.lunch-active {
+      color: ${color.blue};
+    }
   }
 `;
 
@@ -92,24 +83,17 @@ export const Entries = styled.div`
     div:nth-of-type(2) {
       color: ${text.color};
     }
-    div:nth-of-type(1),
-    div:nth-of-type(2) {
-      width: 22.5%;
+    div {
+      flex: 25%;
     }
-    div:nth-of-type(3) {
-      width: 25%;
-    }
-    div:nth-of-type(4),
-    div:nth-of-type(5) {
-      width: 15%;
-    }
-    div:nth-of-type(4){
-      justify-content: center;
-    }
-    div:nth-of-type(5) {
-      justify-content:flex-end;
-    }
-  `;
+  }
+`;
+
+export const EditButtonsContainer = styled.div`
+  div:nth-of-type(2) {
+    justify-content: flex-start;
+  }
+`;
 
 export const IconButtonWrapper = styled.div`
   justify-content: flex-end;
