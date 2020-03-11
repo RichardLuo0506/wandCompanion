@@ -11,7 +11,11 @@ export const color = {
   lighter: `#edeef5`,
   orange: `#ff9600`,
   blue: `#007afe`,
+<<<<<<< HEAD
   inactive: 'gainsboro'
+=======
+  red: `#f44336`
+>>>>>>> master
 };
 
 export const text = {
