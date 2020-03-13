@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { withStyles, makeStyles } from '@material-ui/core/styles';
-import { icon } from '../../common-styled-components';
+import { icon } from '../../theme';
 import Tooltip from '@material-ui/core/Tooltip';
 import Tabs from '@material-ui/core/Tabs';
 

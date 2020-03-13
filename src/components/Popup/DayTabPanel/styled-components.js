@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import Box from '@material-ui/core/Box';
-import { color } from '../../common-styled-components';
+import { color } from '../../theme';
 
 export const DayTabPanelRoot = styled.div`
   flex: 1;
@@ -16,11 +16,9 @@ export const TopSection = styled(Box)`
   width: 100%;
   flex: 1;
   position: relative;
-  // height: 120px;
 `;
 
 export const BottomSection = styled.div`
   width: 100%;
   background: ${color.lighter};
-  // height: 110px;
 `;

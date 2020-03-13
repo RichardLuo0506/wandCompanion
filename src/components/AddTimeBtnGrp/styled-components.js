@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { MyButton } from '../common-styled-components';
+import { MyButton } from '../theme';
 
 export const AddTimeBtnRoot = styled.div`
   display: flex;

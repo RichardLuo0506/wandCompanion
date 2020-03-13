@@ -8,7 +8,7 @@ import {
   Unit
 } from './styled-components';
 
-import { color as themeColor } from '../../common-styled-components';
+import { color as themeColor } from '../../theme';
 
 const NumberDisplay = props => {
   const { color, timeDiff } = props;
