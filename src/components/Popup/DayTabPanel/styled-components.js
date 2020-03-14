@@ -5,8 +5,8 @@ import { color } from '../../theme';
 export const DayTabPanelRoot = styled.div`
   flex: 1;
   position: relative;
-  flex-direction: column;
   display: flex;
+  flex-direction: column;
   &[hidden] {
     display: none;
   }
@@ -14,12 +14,13 @@ export const DayTabPanelRoot = styled.div`
 
 export const TopSection = styled(Box)`
   width: 100%;
+  height: 190px;
   flex: 1;
   position: relative;
 `;
 
 export const BottomSection = styled.div`
   width: 100%;
-  background: ${color.lighter};
   height: 110px;
+  background: ${color.lighter};
 `;

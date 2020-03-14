@@ -4,7 +4,7 @@ import { color } from '../theme';
 export const BrandingRoot = styled.div`
   position: absolute;
   z-index: 1;
-  top: 8px;
+  top: 12px;
   left: 0;
   width: 64px;
   font-size: 28px;

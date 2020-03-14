@@ -42,13 +42,13 @@ export default class TimeRow extends React.Component {
       <TimeRowRoot>
         <MyTextFieldTimePicker
           id="startTime"
-          label="Start Time"
+          label="Start"
           defaultValue={startTime}
           onChange={this.onTimeChange}
         />
         <MyTextFieldTimePicker
           id="endTime"
-          label="End Time"
+          label="End"
           defaultValue={endTime}
           onChange={this.onTimeChange}
         />
