@@ -11,3 +11,12 @@ ReactDOM.render(
   <Popup text="Ext boilerplate" />,
   document.getElementById('root')
 );
+
+document.getElementById('root').addEventListener('click', function(e) {
+  alert(e.which);
+  console.log(e)
+  if (e.which == 74) {
+    console.log(e.which);
+    e.preventDefault();
+  }
+});
