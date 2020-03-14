@@ -12,7 +12,8 @@ export const DailyPunchesRoot = styled.div`
 export const Title = styled.div`
   width: 100%;
   padding: 16px;
-  font-size: 14px;
+  font-size: 16px;
+  font-weight: 500;
   color: ${color.dark};
 `;
 
@@ -32,6 +33,7 @@ export const TableHeaders = styled.div`
   font-size: 12px;
   background: white;
   color: ${text.colorLight};
+  margin-bottom: 4px;
   div {
     flex: 1;
   }
@@ -51,20 +53,19 @@ export const Entry = styled.div`
   width: 100%;
   align-items: center;
   font-size: 12px;
-  div:nth-of-type(1),
-  div:nth-of-type(2) {
+  > div {
     display: flex;
-    color: ${text.color};
-  }
-  div {
-    display: flex;
-    flex: 25%;
+    flex: 0 0 25%;
   }
 `;
 
-export const StartTime = styled.div``;
+export const StartTime = styled.div`
+  color: ${text.color};
+`;
 
-export const EndTime = styled.div``;
+export const EndTime = styled.div`
+  color: ${text.color};
+`;
 
 export const ToggleButtonsContainer = styled.div`
   div:nth-of-type(1) {
