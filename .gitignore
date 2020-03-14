@@ -8,3 +8,4 @@ dev
 .DS_Store
 .intuitgithookrc
 yarn-error.log
+debug.log
