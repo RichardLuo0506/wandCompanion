@@ -1,20 +1,12 @@
 import styled from 'styled-components';
-import { MyButton } from '../common-styled-components';
-import { color, text } from '../common-styled-components';
+import { MyButton, color, text, icon } from '../theme';
 
-export const ContentRoot = styled.div`
+export const DailyPunchesRoot = styled.div`
   position: relative;
   width: 100%;
-  div::-webkit-scrollbar {
-    display: none;
-  }
-  // *-moz-webkit solution depreciated in newer versions of Firefox. Current solution below
-  @-moz-document url-prefix() {
-    > div:nth-of-type(2) {
-      overflow-x: hidden;
-      margin-right: -16px;
-    }
-  }
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 `;
 
 export const Title = styled.div`
@@ -24,7 +16,15 @@ export const Title = styled.div`
   color: ${color.dark};
 `;
 
-export const EntriesHeaders = styled.div`
+export const PunchesTable = styled.div`
+  flex: 1;
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+`;
+
+export const TableHeaders = styled.div`
   display: flex;
   z-index: 1;
   width: 100%;
@@ -33,17 +33,38 @@ export const EntriesHeaders = styled.div`
   background: white;
   color: ${text.colorLight};
   div {
+    flex: 1;
+  }
+`;
+
+export const Entries = styled.div`
+  position: relative;
+  padding: 0 16px;
+  overflow-y: auto;
+  color: ${text.color};
+  flex: 1;
+`;
+
+export const Entry = styled.div`
+  position: relative;
+  display: flex;
+  width: 100%;
+  align-items: center;
+  font-size: 12px;
+  div:nth-of-type(1),
+  div:nth-of-type(2) {
+    display: flex;
+    color: ${text.color};
+  }
+  div {
+    display: flex;
     flex: 25%;
   }
 `;
 
-export const ContentContainer = styled.div`
-  position: relative;
-  padding: 0 16px;
-  overflow-y: auto;
-  height: 140px;
-  color: ${text.color};
-`;
+export const StartTime = styled.div``;
+
+export const EndTime = styled.div``;
 
 export const ToggleButtonsContainer = styled.div`
   div:nth-of-type(1) {
@@ -58,33 +79,13 @@ export const ActiveToggle = styled.div`
   margin: 0;
   cursor: pointer;
   svg {
-    color: ${color.inactive};
+    color: ${icon.color.muted};
     font-size: 20px;
     &.work-active {
       color: ${color.orange};
     }
     &.lunch-active {
       color: ${color.blue};
-    }
-  }
-`;
-
-export const Entries = styled.div`
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  div {
-    position: relative;
-    display: flex;
-    width: 100%;
-    align-items: center;
-    font-size: 12px;
-    div:nth-of-type(1),
-    div:nth-of-type(2) {
-      color: ${text.color};
-    }
-    div {
-      flex: 25%;
     }
   }
 `;

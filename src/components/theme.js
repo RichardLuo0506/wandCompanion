@@ -15,6 +15,8 @@ export const color = {
 
 export const text = {
   color: `rgba(0, 0, 0, 0.87)`,
+  colorLight: `rgba(0, 0, 0, 0.54)`,
+  colorMuted: `rgba(0, 0, 0, 0.38)`,
   size: {
     md: '14px'
   }
@@ -22,7 +24,8 @@ export const text = {
 
 export const icon = {
   color: {
-    onDark: `#585f6d`
+    onDark: `#585f6d`,
+    muted: `gainsboro`
   }
 };
 

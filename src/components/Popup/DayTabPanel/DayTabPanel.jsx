@@ -7,7 +7,7 @@ import {
 } from './styled-components';
 import TimeRow from '../../TimeRow/TimeRow';
 import AddTimeBtnGrp from '../../AddTimeBtnGrp/AddTimeBtnGrp';
-import Content from '../../Content/Content';
+import DailyPunches from '../../DailyPunches/DailyPunches';
 
 export default class TabPanel extends React.Component {
   constructor(props) {
@@ -25,7 +25,7 @@ export default class TabPanel extends React.Component {
     return (
       <DayTabPanelRoot role="tabpanel" hidden={value !== index} {...other}>
         <TopSection boxShadow={2}>
-          <Content />
+          <DailyPunches />
         </TopSection>
         <BottomSection>
           <TimeRow hoveredAddTimeBtn={hoveredAddTimeBtn} />
