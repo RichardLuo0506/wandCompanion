@@ -45,6 +45,9 @@ export const Entries = styled.div`
   overflow-y: auto;
   color: ${text.color};
   flex: 1;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 `;
 
 export const Entry = styled.div`
