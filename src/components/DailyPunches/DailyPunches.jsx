@@ -32,7 +32,7 @@ export default class DailyPunches extends React.Component {
           type: 'work'
         },
         {
-          startTime: '1:00pm',
+          startTime: '01:00pm',
           endTime: '02:00pm',
           type: 'lunch'
         },
