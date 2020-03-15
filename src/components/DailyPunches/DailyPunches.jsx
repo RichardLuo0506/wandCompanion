@@ -1,24 +1,14 @@
 import React from 'react';
-import IconButton from '@material-ui/core/IconButton';
-import WorkIcon from '@material-ui/icons/Work';
-import FastfoodIcon from '@material-ui/icons/Fastfood';
-import CreateIcon from '@material-ui/icons/Create';
-import DeleteIcon from '@material-ui/icons/Delete';
 
 import {
   DailyPunchesRoot,
   Title,
   PunchesTable,
   TableHeaders,
-  Entries,
-  Entry,
-  StartTime,
-  EndTime,
-  ToggleButtonsContainer,
-  ActiveToggle,
-  EditButtonsContainer,
-  IconButtonWrapper
+  Entries
 } from './styled-components';
+
+import Entry from './Entry/Entry';
 
 export default class DailyPunches extends React.Component {
   constructor(props) {
@@ -46,41 +36,14 @@ export default class DailyPunches extends React.Component {
           </TableHeaders>
           <Entries>
             {userPunches.map((userPunch, index) => (
-              // eslint-disable-next-line react/no-array-index-key
-              <Entry key={index}>
-                <StartTime>{userPunch.startTime}</StartTime>
-                <EndTime>{userPunch.endTime}</EndTime>
-                <ToggleButtonsContainer
-                  onClick={() => this.handleToggle(index)}
-                >
-                  <ActiveToggle>
-                    <WorkIcon
-                      className={`
-                          ${userPunch.type === 'work' ? 'work-active' : ''}
-                        `}
-                    />
-                  </ActiveToggle>
-                  <ActiveToggle>
-                    <FastfoodIcon
-                      className={`
-                          ${userPunch.type === 'lunch' ? 'lunch-active' : ''}
-                        `}
-                    />
-                  </ActiveToggle>
-                </ToggleButtonsContainer>
-                <EditButtonsContainer>
-                  <IconButtonWrapper>
-                    <IconButton className="edit-button" size="small">
-                      <DeleteIcon />
-                    </IconButton>
-                  </IconButtonWrapper>
-                  <IconButtonWrapper>
-                    <IconButton className="edit-button" size="small">
-                      <CreateIcon />
-                    </IconButton>
-                  </IconButtonWrapper>
-                </EditButtonsContainer>
-              </Entry>
+              <Entry
+                // eslint-disable-next-line react/no-array-index-key
+                key={index}
+                // TODO: maybe switch this not to use index as key
+                id={index}
+                handleClick={this.handleToggle}
+                userPunch={userPunch}
+              />
             ))}
           </Entries>
         </PunchesTable>
