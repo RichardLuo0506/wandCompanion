@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { MyButton, color, text, icon } from '../theme';
+import { MyButton, icon, text, color } from '../../theme';
 
 export const DailyPunchesRoot = styled.div`
   position: relative;
@@ -52,7 +52,7 @@ export const Entries = styled.div`
   }
 `;
 
-export const Entry = styled.div`
+export const EntryRoot = styled.div`
   position: relative;
   display: flex;
   width: 100%;

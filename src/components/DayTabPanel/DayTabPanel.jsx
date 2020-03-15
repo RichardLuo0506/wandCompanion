@@ -7,7 +7,7 @@ import {
 } from './styled-components';
 import EntryEditor from '../EntryEditor/EntryEditor';
 import AddTimeBtnGrp from '../AddTimeBtnGrp/AddTimeBtnGrp';
-import DailyPunches from '../DailyPunches/DailyPunches';
+import DailyEntries from '../DailyEntries/DailyEntries';
 
 export default class TabPanel extends React.Component {
   constructor(props) {
@@ -17,7 +17,7 @@ export default class TabPanel extends React.Component {
       hoveredAddTimeBtn: ''
     };
 
-    this.dailyPunchesRef = React.createRef();
+    this.dailyEntriesRef = React.createRef();
     this.entryEditorRef = React.createRef();
     this.onAddEntry = this.onAddEntry.bind(this);
   }
@@ -29,7 +29,7 @@ export default class TabPanel extends React.Component {
     return (
       <DayTabPanelRoot role="tabpanel" hidden={value !== index} {...other}>
         <TopSection boxShadow={2}>
-          <DailyPunches ref={this.dailyPunchesRef} />
+          <DailyEntries ref={this.dailyEntriesRef} />
         </TopSection>
         <BottomSection>
           <EntryEditor
@@ -54,7 +54,7 @@ export default class TabPanel extends React.Component {
 
   onAddEntry(entryType) {
     const { current: entryEditorInstance } = this.entryEditorRef;
-    const { current: dailyPunchesInstance } = this.dailyPunchesRef;
+    const { current: dailyEntriesInstance } = this.dailyEntriesRef;
     const entry = {
       startTime: entryEditorInstance.state.startTime,
       startTimeFormatted: entryEditorInstance.state.startTimeFormatted,
@@ -63,7 +63,7 @@ export default class TabPanel extends React.Component {
       minutes: entryEditorInstance.state.timeDiff,
       type: entryType
     };
-    dailyPunchesInstance.addEntry(entry);
+    dailyEntriesInstance.addEntry(entry);
   }
 }
 
