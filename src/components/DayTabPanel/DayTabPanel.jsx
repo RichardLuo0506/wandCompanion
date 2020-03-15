@@ -17,6 +17,8 @@ export default class TabPanel extends React.Component {
       hoveredAddTimeBtn: ''
     };
 
+    this.dailyPunchesRef = React.createRef();
+    this.entryEditorRef = React.createRef();
     this.onAddEntry = this.onAddEntry.bind(this);
   }
 
@@ -27,11 +29,13 @@ export default class TabPanel extends React.Component {
     return (
       <DayTabPanelRoot role="tabpanel" hidden={value !== index} {...other}>
         <TopSection boxShadow={2}>
-          <DailyPunches />
+          <DailyPunches ref={this.dailyPunchesRef} />
         </TopSection>
         <BottomSection>
-          <EntryEditor hoveredAddTimeBtn={hoveredAddTimeBtn} />
-          {/* <EntryEditor hoveredAddTimeBtn={hoveredAddTimeBtn} ref={this.entryEditorRef}/> */}
+          <EntryEditor
+            hoveredAddTimeBtn={hoveredAddTimeBtn}
+            ref={this.entryEditorRef}
+          />
           <AddTimeBtnGrp
             onHover={this.addTimeBtnGrpHover.bind(this)}
             onAddEntry={this.onAddEntry}
@@ -48,8 +52,18 @@ export default class TabPanel extends React.Component {
     });
   }
 
-  onAddEntry(entry) {
-    console.log('entry', entry);
+  onAddEntry(entryType) {
+    const { current: entryEditorInstance } = this.entryEditorRef;
+    const { current: dailyPunchesInstance } = this.dailyPunchesRef;
+    const entry = {
+      startTime: entryEditorInstance.state.startTime,
+      startTimeFormatted: entryEditorInstance.state.startTimeFormatted,
+      endTime: entryEditorInstance.state.endTime,
+      endTimeFormatted: entryEditorInstance.state.endTimeFormatted,
+      minutes: entryEditorInstance.state.timeDiff,
+      type: entryType
+    };
+    dailyPunchesInstance.addEntry(entry);
   }
 }
 

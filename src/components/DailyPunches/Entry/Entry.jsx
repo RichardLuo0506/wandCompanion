@@ -18,15 +18,15 @@ import {
 const Entry = props => {
   const { id } = props;
   const { userPunch } = props;
-  const { startTime } = userPunch;
-  const { endTime } = userPunch;
+  const { startTimeFormatted } = userPunch;
+  const { endTimeFormatted } = userPunch;
   const { type } = userPunch;
   const { handleClick } = props;
 
   return (
     <EntryRoot>
-      <StartTime>{startTime}</StartTime>
-      <EndTime>{endTime}</EndTime>
+      <StartTime>{startTimeFormatted}</StartTime>
+      <EndTime>{endTimeFormatted}</EndTime>
       <ToggleButtonsContainer onClick={toggle}>
         <ActiveToggle>
           <WorkIcon className={type === 'work' ? 'work-active' : ''} />

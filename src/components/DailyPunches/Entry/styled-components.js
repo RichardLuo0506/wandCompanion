@@ -37,10 +37,10 @@ export const ActiveToggle = styled.div`
     color: ${icon.color.muted};
     font-size: 20px;
     &.work-active {
-      color: ${color.orange};
+      color: ${color.blue};
     }
     &.lunch-active {
-      color: ${color.blue};
+      color: ${color.orange};
     }
   }
 `;
