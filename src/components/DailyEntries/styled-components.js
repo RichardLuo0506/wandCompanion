@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { color, text } from '../theme';
 
-export const DailyPunchesRoot = styled.div`
+export const DailyEntriesRoot = styled.div`
   position: relative;
   width: 100%;
   height: 100%;
@@ -17,7 +17,7 @@ export const Title = styled.div`
   color: ${color.dark};
 `;
 
-export const PunchesTable = styled.div`
+export const EntriesTable = styled.div`
   flex: 1;
   height: 100%;
   overflow: hidden;

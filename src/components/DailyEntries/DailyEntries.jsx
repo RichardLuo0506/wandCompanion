@@ -1,21 +1,21 @@
 import React from 'react';
 
 import {
-  DailyPunchesRoot,
+  DailyEntriesRoot,
   Title,
-  PunchesTable,
+  EntriesTable,
   TableHeaders,
   Entries
 } from './styled-components';
 
 import Entry from './Entry/Entry';
 
-export default class DailyPunches extends React.Component {
+export default class DailyEntries extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      userPunches: []
+      entries: []
     };
 
     this.addEntry = this.addEntry.bind(this);
@@ -23,11 +23,11 @@ export default class DailyPunches extends React.Component {
   }
 
   render() {
-    const { userPunches } = this.state;
+    const { entries } = this.state;
     return (
-      <DailyPunchesRoot>
+      <DailyEntriesRoot>
         <Title>Today</Title>
-        <PunchesTable>
+        <EntriesTable>
           <TableHeaders>
             <div>Start</div>
             <div>End</div>
@@ -35,7 +35,7 @@ export default class DailyPunches extends React.Component {
             <div />
           </TableHeaders>
           <Entries>
-            {userPunches.map((userPunch, index) => (
+            {entries.map((userPunch, index) => (
               <Entry
                 // eslint-disable-next-line react/no-array-index-key
                 key={index}
@@ -46,23 +46,23 @@ export default class DailyPunches extends React.Component {
               />
             ))}
           </Entries>
-        </PunchesTable>
-      </DailyPunchesRoot>
+        </EntriesTable>
+      </DailyEntriesRoot>
     );
   }
 
   addEntry(entry) {
-    const { userPunches } = this.state;
-    const newPunches = [...userPunches, entry];
+    const { entries } = this.state;
+    const newEntries = [...entries, entry];
     this.setState({
-      userPunches: newPunches
+      entries: newEntries
     });
   }
 
   handleToggle(id) {
     const prevState = Object.assign({}, this.state);
-    const { userPunches } = prevState;
-    const entry = userPunches[id];
+    const { entries } = prevState;
+    const entry = entries[id];
 
     entry.type = entry.type === 'work' ? 'lunch' : 'work';
     this.setState(prevState);
