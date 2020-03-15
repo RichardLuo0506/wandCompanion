@@ -2,9 +2,8 @@ import React, { useCallback } from 'react';
 
 import TextField from '@material-ui/core/TextField';
 import { makeStyles } from '@material-ui/core/styles';
-import PropTypes from 'prop-types';
 
-export default function MyTextFieldTimePicker(props) {
+const MyTextFieldTimePicker = props => {
   const { id, label, defaultValue, onChange } = props;
   const classes = useStyles();
 
@@ -27,7 +26,7 @@ export default function MyTextFieldTimePicker(props) {
       }}
     />
   );
-}
+};
 
 const useStyles = makeStyles(() => ({
   textField: {
@@ -39,7 +38,4 @@ const useStyles = makeStyles(() => ({
   }
 }));
 
-MyTextFieldTimePicker.propTypes = {
-  label: PropTypes.string,
-  defaultValue: PropTypes.string
-};
+export default MyTextFieldTimePicker;

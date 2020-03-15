@@ -5,9 +5,9 @@ import {
   TopSection,
   BottomSection
 } from './styled-components';
-import TimeRow from '../../TimeRow/TimeRow';
-import AddTimeBtnGrp from '../../AddTimeBtnGrp/AddTimeBtnGrp';
-import DailyPunches from '../../DailyPunches/DailyPunches';
+import EntryEditor from '../EntryEditor/EntryEditor';
+import AddTimeBtnGrp from '../AddTimeBtnGrp/AddTimeBtnGrp';
+import DailyPunches from '../DailyPunches/DailyPunches';
 
 export default class TabPanel extends React.Component {
   constructor(props) {
@@ -16,6 +16,8 @@ export default class TabPanel extends React.Component {
     this.state = {
       hoveredAddTimeBtn: ''
     };
+
+    this.onAddEntry = this.onAddEntry.bind(this);
   }
 
   render() {
@@ -28,8 +30,12 @@ export default class TabPanel extends React.Component {
           <DailyPunches />
         </TopSection>
         <BottomSection>
-          <TimeRow hoveredAddTimeBtn={hoveredAddTimeBtn} />
-          <AddTimeBtnGrp onHover={this.addTimeBtnGrpHover.bind(this)} />
+          <EntryEditor hoveredAddTimeBtn={hoveredAddTimeBtn} />
+          {/* <EntryEditor hoveredAddTimeBtn={hoveredAddTimeBtn} ref={this.entryEditorRef}/> */}
+          <AddTimeBtnGrp
+            onHover={this.addTimeBtnGrpHover.bind(this)}
+            onAddEntry={this.onAddEntry}
+          />
         </BottomSection>
       </DayTabPanelRoot>
     );
@@ -40,6 +46,10 @@ export default class TabPanel extends React.Component {
     this.setState({
       hoveredAddTimeBtn: type
     });
+  }
+
+  onAddEntry(entry) {
+    console.log('entry', entry);
   }
 }
 

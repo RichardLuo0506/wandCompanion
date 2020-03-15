@@ -10,7 +10,7 @@ import TodayIcon from '@material-ui/icons/Today';
 import ViewWeekIcon from '@material-ui/icons/ViewWeek';
 import ListAltIcon from '@material-ui/icons/ListAlt';
 import DayTabPanel from '../DayTabPanel/DayTabPanel';
-import Branding from '../../Branding/Branding';
+import Branding from '../Branding/Branding';
 
 export default function PopupTabsNavigation() {
   const classes = useStyles();
