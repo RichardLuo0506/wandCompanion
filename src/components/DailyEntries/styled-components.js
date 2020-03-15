@@ -49,3 +49,8 @@ export const Entries = styled.div`
     display: none;
   }
 `;
+
+export const NoEntries = styled.div`
+  padding: 0 16px;
+  font-size: 12px;
+`;

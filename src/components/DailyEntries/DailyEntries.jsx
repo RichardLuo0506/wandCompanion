@@ -5,7 +5,8 @@ import {
   Title,
   EntriesTable,
   TableHeaders,
-  Entries
+  Entries,
+  NoEntries
 } from './styled-components';
 
 import Entry from './Entry/Entry';
@@ -24,29 +25,34 @@ export default class DailyEntries extends React.Component {
 
   render() {
     const { entries } = this.state;
+    const hasEntries = entries.length;
     return (
       <DailyEntriesRoot>
         <Title>Today</Title>
-        <EntriesTable>
-          <TableHeaders>
-            <div>Start</div>
-            <div>End</div>
-            <div />
-            <div />
-          </TableHeaders>
-          <Entries>
-            {entries.map((userPunch, index) => (
-              <Entry
-                // eslint-disable-next-line react/no-array-index-key
-                key={index}
-                // TODO: maybe switch this not to use index as key
-                id={index}
-                handleClick={this.handleToggle}
-                userPunch={userPunch}
-              />
-            ))}
-          </Entries>
-        </EntriesTable>
+        {hasEntries ? (
+          <EntriesTable>
+            <TableHeaders>
+              <div>Start</div>
+              <div>End</div>
+              <div />
+              <div />
+            </TableHeaders>
+            <Entries>
+              {entries.map((userPunch, index) => (
+                <Entry
+                  // eslint-disable-next-line react/no-array-index-key
+                  key={index}
+                  // TODO: maybe switch this not to use index as key
+                  id={index}
+                  handleClick={this.handleToggle}
+                  userPunch={userPunch}
+                />
+              ))}
+            </Entries>
+          </EntriesTable>
+        ) : (
+          <NoEntries>No entries so far, add some 👇</NoEntries>
+        )}
       </DailyEntriesRoot>
     );
   }
