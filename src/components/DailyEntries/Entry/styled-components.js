@@ -15,7 +15,6 @@ export const Title = styled.div`
   font-size: 16px;
   font-weight: 500;
   color: ${color.dark};
-  user-select: none;
 `;
 
 export const PunchesTable = styled.div`
@@ -35,7 +34,6 @@ export const TableHeaders = styled.div`
   background: white;
   color: ${text.colorLight};
   margin-bottom: 4px;
-  user-select: none;
   div {
     flex: 1;
   }
