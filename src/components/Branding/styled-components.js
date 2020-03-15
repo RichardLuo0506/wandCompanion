@@ -11,7 +11,7 @@ export const BrandingRoot = styled.div`
   text-align: center;
   user-select: none;
   letter-spacing: -2px;
-  // "margin-left: -1px" fixes issue where "letter-spacing: -2px" only affects one child element
+  ${'' /* "margin-left: -1px" // fixes issue where "letter-spacing: -2px" only affects one child element */}
   margin-left: -1px;
   font-weight: bold;
   span:nth-child(1) {

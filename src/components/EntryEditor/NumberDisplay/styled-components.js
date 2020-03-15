@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { theme } from '../../theme';
+import { text } from '../../theme';
 
 export const NumberDisplayRoot = styled.div`
   display: block;
@@ -10,15 +10,16 @@ export const NumberDisplayRoot = styled.div`
 
 export const Label = styled.div`
   margin-bottom: 6px;
-  display: block;
-  color: ${theme.palette.text.secondary};
+  font-size: 10.5px;
+  color: ${text.colorLight};
 `;
 
 export const NumberWrapper = styled.div`
   display: flex;
   align-items: baseline;
   justify-content: center;
-  color: ${theme.palette.text.primary};
+  color: ${text.color};
+  font-size: 10.5px;
 `;
 
 export const Sign = styled.span`
