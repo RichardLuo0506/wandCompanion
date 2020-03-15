@@ -21,8 +21,7 @@ const Entry = props => {
   const { startTimeFormatted } = userPunch;
   const { endTimeFormatted } = userPunch;
   const { type } = userPunch;
-  const { handleToggle } = props;
-  const { handleRemove } = props;
+  const { handleClick } = props;
 
   return (
     <EntryRoot>
@@ -39,7 +38,7 @@ const Entry = props => {
       <EditButtonsContainer>
         <IconButtonWrapper>
           <IconButton className="edit-button" size="small">
-            <DeleteIcon onClick={remove} />
+            <DeleteIcon />
           </IconButton>
         </IconButtonWrapper>
         <IconButtonWrapper>
@@ -51,12 +50,8 @@ const Entry = props => {
     </EntryRoot>
   );
 
-  function remove() {
-    handleRemove(id);
-  }
-
   function toggle() {
-    handleToggle(id);
+    handleClick(id);
   }
 };
 

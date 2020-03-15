@@ -7,6 +7,7 @@ export const DayTabPanelRoot = styled.div`
   position: relative;
   display: flex;
   flex-direction: column;
+  user-select: none;
   &[hidden] {
     display: none;
   }
