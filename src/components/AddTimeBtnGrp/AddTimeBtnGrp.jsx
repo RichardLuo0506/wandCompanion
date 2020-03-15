@@ -9,22 +9,22 @@ const AddTimeBtnGrp = props => {
   return (
     <AddTimeBtnRoot>
       <AddWorkBtn
-        onMouseOver={() => onHover('lunch')}
-        onMouseOut={() => onHover('')}
-        onClick={() => addEntry('lunch')}
-        color="primary"
-        startIcon={<FastfoodIcon />}
-      >
-        Add Lunch
-      </AddWorkBtn>
-      <AddWorkBtn
         onMouseOver={() => onHover('work')}
         onMouseOut={() => onHover('')}
         onClick={() => addEntry('work')}
         color="secondary"
-        endIcon={<WorkIcon />}
+        startIcon={<WorkIcon />}
       >
         Add Work
+      </AddWorkBtn>
+      <AddWorkBtn
+        onMouseOver={() => onHover('lunch')}
+        onMouseOut={() => onHover('')}
+        onClick={() => addEntry('lunch')}
+        color="primary"
+        endIcon={<FastfoodIcon />}
+      >
+        Add Lunch
       </AddWorkBtn>
     </AddTimeBtnRoot>
   );

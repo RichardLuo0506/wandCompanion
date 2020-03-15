@@ -25,55 +25,10 @@ export default class DailyPunches extends React.Component {
     super(props);
 
     this.state = {
-      userPunches: [
-        {
-          startTime: '09:00am',
-          endTime: '12:00pm',
-          type: 'work'
-        },
-        {
-          startTime: '01:00pm',
-          endTime: '02:00pm',
-          type: 'lunch'
-        },
-        {
-          startTime: '03:00pm',
-          endTime: '05:00pm',
-          type: 'work'
-        },
-        {
-          startTime: '09:00am',
-          endTime: '12:00pm',
-          type: 'work'
-        },
-        {
-          startTime: '01:00pm',
-          endTime: '02:00pm',
-          type: 'lunch'
-        },
-        {
-          startTime: '03:00pm',
-          endTime: '05:00pm',
-          type: 'work'
-        },
-        {
-          startTime: '09:00am',
-          endTime: '12:00pm',
-          type: 'work'
-        },
-        {
-          startTime: '01:00pm',
-          endTime: '02:00pm',
-          type: 'lunch'
-        },
-        {
-          startTime: '03:00pm',
-          endTime: '05:00pm',
-          type: 'work'
-        }
-      ]
+      userPunches: []
     };
 
+    this.addEntry = this.addEntry.bind(this);
     this.handleToggle = this.handleToggle.bind(this);
   }
 
@@ -131,6 +86,14 @@ export default class DailyPunches extends React.Component {
         </PunchesTable>
       </DailyPunchesRoot>
     );
+  }
+
+  addEntry(entry) {
+    const { userPunches } = this.state;
+    const newPunches = [...userPunches, entry];
+    this.setState({
+      userPunches: newPunches
+    });
   }
 
   handleToggle(id) {
