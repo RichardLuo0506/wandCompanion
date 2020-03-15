@@ -15,6 +15,7 @@ export const Title = styled.div`
   font-size: 16px;
   font-weight: 500;
   color: ${color.dark};
+  user-select: none;
 `;
 
 export const PunchesTable = styled.div`
@@ -34,6 +35,7 @@ export const TableHeaders = styled.div`
   background: white;
   color: ${text.colorLight};
   margin-bottom: 4px;
+  user-select: none;
   div {
     flex: 1;
   }
@@ -64,10 +66,12 @@ export const Entry = styled.div`
 
 export const StartTime = styled.div`
   color: ${text.color};
+  user-select: none;
 `;
 
 export const EndTime = styled.div`
   color: ${text.color};
+  user-select: none;
 `;
 
 export const ToggleButtonsContainer = styled.div`
