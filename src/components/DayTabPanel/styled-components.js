@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import Box from '@material-ui/core/Box';
-import { color } from '../../theme';
+import { color } from '../theme';
 
 export const DayTabPanelRoot = styled.div`
   flex: 1;
