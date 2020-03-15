@@ -1,5 +1,5 @@
 import styled from 'styled-components';
 
-export const TimeRowRoot = styled.div`
+export const EntryEditorRoot = styled.div`
   display: flex;
 `;

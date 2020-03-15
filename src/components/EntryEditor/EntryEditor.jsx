@@ -1,5 +1,5 @@
 import React from 'react';
-import { TimeRowRoot } from './styled-components';
+import { EntryEditorRoot } from './styled-components';
 import MyTextFieldTimePicker from './MyTextFieldTimePicker';
 import NumberDisplay from './NumberDisplay/NumberDisplay';
 import PropTypes from 'prop-types';
@@ -7,7 +7,7 @@ import { theme } from '../theme';
 import { parse } from 'date-fns';
 import differenceInMinutes from 'date-fns/differenceInMinutes';
 
-export default class TimeRow extends React.Component {
+export default class EntryEditor extends React.Component {
   constructor(props) {
     super(props);
     this.onTimeChange = this.onTimeChange.bind(this);
@@ -39,7 +39,7 @@ export default class TimeRow extends React.Component {
     }
 
     return (
-      <TimeRowRoot>
+      <EntryEditorRoot>
         <MyTextFieldTimePicker
           id="startTime"
           label="Start"
@@ -53,7 +53,7 @@ export default class TimeRow extends React.Component {
           onChange={this.onTimeChange}
         />
         <NumberDisplay color={this.numDisplayColor} timeDiff={timeDiff} />
-      </TimeRowRoot>
+      </EntryEditorRoot>
     );
   }
 
@@ -81,6 +81,6 @@ export default class TimeRow extends React.Component {
   }
 }
 
-TimeRow.propTypes = {
+EntryEditor.propTypes = {
   hoveredAddTimeBtn: PropTypes.string
 };

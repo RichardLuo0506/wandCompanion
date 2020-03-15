@@ -12,7 +12,7 @@ const jss = create({
 import { theme } from '../theme';
 import DateFnsUtils from '@date-io/date-fns';
 import { MuiPickersUtilsProvider } from '@material-ui/pickers';
-import PopupTabsNavigation from './PopupTabsNavigation/PopupTabsNavigation';
+import PopupTabsNavigation from '../PopupTabsNavigation/PopupTabsNavigation';
 import AddAlarmIcon from '@material-ui/icons/AddAlarm';
 import SettingsIcon from '@material-ui/icons/Settings';
 import { PopupContainer } from './styled-components';
