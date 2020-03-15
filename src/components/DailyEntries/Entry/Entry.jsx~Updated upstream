@@ -21,7 +21,7 @@ const Entry = props => {
   const { startTimeFormatted } = userPunch;
   const { endTimeFormatted } = userPunch;
   const { type } = userPunch;
-  const { handleToggle } = props;
+  const { handleClick } = props;
   const { handleRemove } = props;
 
   return (
@@ -52,8 +52,9 @@ const Entry = props => {
   );
 
   function toggle() {
-    handleToggle(id);
+    handleClick(id);
   }
+
   function remove() {
     handleRemove(id);
   }
