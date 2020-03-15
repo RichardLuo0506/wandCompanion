@@ -19,7 +19,7 @@ export default class DailyEntries extends React.Component {
     };
 
     this.addEntry = this.addEntry.bind(this);
-    this.togglePunchType = this.togglePunchType.bind(this);
+    this.toggleEntryType = this.toggleEntryType.bind(this);
     this.removePunch = this.removePunch.bind(this);
   }
 
@@ -43,7 +43,7 @@ export default class DailyEntries extends React.Component {
                 // TODO: maybe switch this not to use index as key
                 id={index}
                 userPunch={userPunch}
-                handleToggle={this.togglePunchType}
+                handleToggle={this.toggleEntryType}
                 handleRemove={this.removePunch}
               />
             ))}
@@ -61,7 +61,7 @@ export default class DailyEntries extends React.Component {
     });
   }
 
-  togglePunchType(id) {
+  toggleEntryType(id) {
     const prevState = Object.assign({}, this.state);
     const { entries } = prevState;
     const entry = entries[id];

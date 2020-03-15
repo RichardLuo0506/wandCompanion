@@ -51,11 +51,12 @@ const Entry = props => {
     </EntryRoot>
   );
 
-  function toggle() {
-    handleToggle(id);
-  }
   function remove() {
     handleRemove(id);
+  }
+
+  function toggle() {
+    handleToggle(id);
   }
 };
 

@@ -7,6 +7,7 @@ export const DailyEntriesRoot = styled.div`
   height: 100%;
   display: flex;
   flex-direction: column;
+  user-select: none;
 `;
 
 export const Title = styled.div`

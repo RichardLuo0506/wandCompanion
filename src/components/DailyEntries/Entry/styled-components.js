@@ -66,12 +66,10 @@ export const EntryRoot = styled.div`
 
 export const StartTime = styled.div`
   color: ${text.color};
-  user-select: none;
 `;
 
 export const EndTime = styled.div`
   color: ${text.color};
-  user-select: none;
 `;
 
 export const ToggleButtonsContainer = styled.div`
