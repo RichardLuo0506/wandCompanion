@@ -16,24 +16,23 @@ import {
 } from './styled-components';
 
 const Entry = props => {
-  handleClick = () => {
-    this.props.onButtonToggle(this.props.value);
-  };
+  const { id } = props;
+  const { userPunch } = props;
+  const { startTime } = userPunch;
+  const { endTime } = userPunch;
+  const { type } = userPunch;
+  const { handleClick } = props;
 
   return (
-    <EntryRoot key={props.index}>
-      <StartTime>{props.userPunch.startTime}</StartTime>
-      <EndTime>{props.userPunch.endTime}</EndTime>
-      <ToggleButtonsContainer onClick={this.handleClick}>
+    <EntryRoot>
+      <StartTime>{startTime}</StartTime>
+      <EndTime>{endTime}</EndTime>
+      <ToggleButtonsContainer onClick={toggle}>
         <ActiveToggle>
-          <WorkIcon
-            className={props.userPunch.type === 'work' ? 'work-active' : ''}
-          />
+          <WorkIcon className={type === 'work' ? 'work-active' : ''} />
         </ActiveToggle>
         <ActiveToggle>
-          <FastfoodIcon
-            className={props.userPunch.type === 'lunch' ? 'lunch-active' : ''}
-          />
+          <FastfoodIcon className={type === 'lunch' ? 'lunch-active' : ''} />
         </ActiveToggle>
       </ToggleButtonsContainer>
       <EditButtonsContainer>
@@ -50,6 +49,10 @@ const Entry = props => {
       </EditButtonsContainer>
     </EntryRoot>
   );
+
+  function toggle() {
+    handleClick(id);
+  }
 };
 
 export default Entry;

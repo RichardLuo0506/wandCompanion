@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { MyButton, icon, text, color } from '../theme';
+import { MyButton, icon, text, color } from '../../theme';
 
 export const EntryRoot = styled.div`
   position: relative;

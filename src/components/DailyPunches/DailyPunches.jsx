@@ -81,11 +81,13 @@ export default class DailyPunches extends React.Component {
           </TableHeaders>
           <Entries>
             {userPunches.map((userPunch, index) => (
-              // eslint-disable-next-line react/no-array-index-key
               <Entry
-                value={userPunch}
-                onButtonToggle={this.handleClick}
+                // eslint-disable-next-line react/no-array-index-key
                 key={index}
+                // TODO: maybe switch this not to use index as key
+                id={index}
+                handleClick={this.handleToggle}
+                userPunch={userPunch}
               />
             ))}
           </Entries>
