@@ -17,10 +17,10 @@ import {
 
 const Entry = props => {
   const { id } = props;
-  const { userPunch } = props;
-  const { startTimeFormatted } = userPunch;
-  const { endTimeFormatted } = userPunch;
-  const { type } = userPunch;
+  const { userEntry } = props;
+  const { startTimeFormatted } = userEntry;
+  const { endTimeFormatted } = userEntry;
+  const { type } = userEntry;
   const { handleToggle } = props;
   const { handleRemove } = props;
 
