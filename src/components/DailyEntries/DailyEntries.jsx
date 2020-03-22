@@ -3,6 +3,7 @@ import React from 'react';
 import {
   DailyEntriesRoot,
   Title,
+  DailyTotal,
   EntriesTable,
   TableHeaders,
   Entries,
@@ -10,6 +11,7 @@ import {
 } from './styled-components';
 
 import Entry from './Entry/Entry';
+import NumberDisplay from '../NumberDisplay/NumberDisplay';
 
 export default class DailyEntries extends React.Component {
   constructor(props) {
@@ -26,10 +28,19 @@ export default class DailyEntries extends React.Component {
 
   render() {
     const { entries } = this.state;
-    const hasEntries = entries.length;
+    const hasEntries = entries.length > 0;
+    const minutesTotal = this.calcMinutesTotal(entries);
     return (
       <DailyEntriesRoot>
-        <Title>Today</Title>
+        <Title>
+          Today
+          {hasEntries && (
+            <DailyTotal>
+              <span className="space"></span>
+              <NumberDisplay timeDiff={minutesTotal} inline={true} />
+            </DailyTotal>
+          )}
+        </Title>
         {hasEntries ? (
           <EntriesTable>
             <TableHeaders>
@@ -65,6 +76,11 @@ export default class DailyEntries extends React.Component {
     this.setState({
       entries: newEntries
     });
+  }
+
+  calcMinutesTotal(entries) {
+    const minutes = entries.reduce((sum, current) => sum + current.minutes, 0);
+    return minutes;
   }
 
   toggleEntryType(id) {

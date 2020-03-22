@@ -17,6 +17,13 @@ export const Title = styled.div`
   color: ${color.dark};
 `;
 
+export const DailyTotal = styled.span`
+  font-weight: normal;
+  .space {
+    margin-left: 5px;
+  }
+`;
+
 export const EntriesTable = styled.div`
   flex: 1;
   height: 100%;

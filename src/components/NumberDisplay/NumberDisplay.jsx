@@ -8,21 +8,22 @@ import {
   Unit
 } from './styled-components';
 
-import { color as themeColor } from '../../theme';
+import { color as themeColor } from '../theme';
 
 const NumberDisplay = props => {
-  const { color, timeDiff } = props;
+  const { color, timeDiff, inline } = props;
   const { sign, hour, minute, unit, unit2 } = getNumDisplay(timeDiff);
   const hoverColor = timeDiff > 0 ? color : themeColor.red;
   return (
-    <NumberDisplayRoot>
-      <Label>Total</Label>
+    // TODO: Is there better (DRY) way of passing prop "inline" to styled components?
+    <NumberDisplayRoot inline={inline}>
+      <Label inline={inline}>Total</Label>
       <NumberWrapper style={{ color: hoverColor }}>
-        {sign ? <Sign>{sign}</Sign> : ''}
-        {hour ? <Number>{hour}</Number> : ''}
-        {unit ? <Unit>{unit}</Unit> : ''}
-        {minute ? <Number>{minute}</Number> : ''}
-        {unit2 ? <Unit>{unit2}</Unit> : ''}
+        {sign ? <Sign inline={inline}>{sign}</Sign> : ''}
+        {hour ? <Number inline={inline}>{hour}</Number> : ''}
+        {unit ? <Unit inline={inline}>{unit}</Unit> : ''}
+        {minute ? <Number inline={inline}>{minute}</Number> : ''}
+        {unit2 ? <Unit inline={inline}>{unit2}</Unit> : ''}
       </NumberWrapper>
     </NumberDisplayRoot>
   );

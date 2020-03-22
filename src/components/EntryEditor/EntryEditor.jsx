@@ -1,7 +1,7 @@
 import React from 'react';
 import { EntryEditorRoot } from './styled-components';
 import MyTextFieldTimePicker from './MyTextFieldTimePicker';
-import NumberDisplay from './NumberDisplay/NumberDisplay';
+import NumberDisplay from '../NumberDisplay/NumberDisplay';
 import PropTypes from 'prop-types';
 import { color, text } from '../theme';
 import { parse, format } from 'date-fns';
