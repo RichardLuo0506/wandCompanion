@@ -6,16 +6,13 @@ import {
   BottomSection
 } from './styled-components';
 import EntryEditor from '../EntryEditor/EntryEditor';
-import AddTimeBtnGrp from '../AddTimeBtnGrp/AddTimeBtnGrp';
 import DailyEntries from '../DailyEntries/DailyEntries';
 
 export default class TabPanel extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      hoveredAddTimeBtn: ''
-    };
+    this.state = {};
 
     this.dailyEntriesRef = React.createRef();
     this.entryEditorRef = React.createRef();
@@ -24,7 +21,6 @@ export default class TabPanel extends React.Component {
 
   render() {
     const { value, index, ...other } = this.props;
-    const { hoveredAddTimeBtn } = this.state;
 
     return (
       <DayTabPanelRoot role="tabpanel" hidden={value !== index} {...other}>
@@ -32,24 +28,10 @@ export default class TabPanel extends React.Component {
           <DailyEntries ref={this.dailyEntriesRef} />
         </TopSection>
         <BottomSection>
-          <EntryEditor
-            hoveredAddTimeBtn={hoveredAddTimeBtn}
-            ref={this.entryEditorRef}
-          />
-          <AddTimeBtnGrp
-            onHover={this.addTimeBtnGrpHover.bind(this)}
-            onAddEntry={this.onAddEntry}
-          />
+          <EntryEditor ref={this.entryEditorRef} onAddEntry={this.onAddEntry} />
         </BottomSection>
       </DayTabPanelRoot>
     );
-  }
-
-  // TODO: throttle this
-  addTimeBtnGrpHover(type) {
-    this.setState({
-      hoveredAddTimeBtn: type
-    });
   }
 
   onAddEntry(entryType) {

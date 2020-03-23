@@ -33,8 +33,7 @@ export default class Popup extends React.Component {
           title: 'Settings',
           icon: <SettingsIcon />
         }
-      ],
-      hoveredAddTimeBtn: ''
+      ]
     };
   }
 
@@ -58,11 +57,5 @@ export default class Popup extends React.Component {
 
   selectMenuItem(id) {
     this.setState({ selectedMenuItem: id });
-  }
-
-  addTimeBtnGrpHover(type) {
-    this.setState({
-      hoveredAddTimeBtn: type
-    });
   }
 }

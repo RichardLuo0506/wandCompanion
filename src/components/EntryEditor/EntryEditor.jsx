@@ -1,31 +1,29 @@
 import React from 'react';
-import { EntryEditorRoot } from './styled-components';
+import { EntryEditorRoot, EntryFieldsRow } from './styled-components';
 import MyTextFieldTimePicker from './MyTextFieldTimePicker';
 import NumberDisplay from '../NumberDisplay/NumberDisplay';
-import PropTypes from 'prop-types';
 import { color, text } from '../theme';
 import { parse, format } from 'date-fns';
 import differenceInMinutes from 'date-fns/differenceInMinutes';
+import AddTimeBtnGrp from '../AddTimeBtnGrp/AddTimeBtnGrp';
+import PropTypes from 'prop-types';
 
 export default class EntryEditor extends React.Component {
   constructor(props) {
     super(props);
     this.date = new Date();
 
-    const defaults = {
-      startTime: '09:00',
-      endTime: '12:00',
-      numDisplay: {},
-      timeDiff: 180
-    };
     this.state = {
-      ...defaults,
-      ...{
-        startTimeFormatted: this.formatTime(defaults.startTime),
-        endTimeFormatted: this.formatTime(defaults.endTime)
-      }
+      startTime: '09:00',
+      startTimeFormatted: this.formatTime('09:00'),
+      endTime: '12:00',
+      endTimeFormatted: this.formatTime('12:00'),
+      timeDiff: 180,
+      numDisplay: {}
     };
 
+    this.addTimeBtnGrpHover = this.addTimeBtnGrpHover.bind(this);
+    this.addTimeBtnGrpHover = this.addTimeBtnGrpHover.bind(this);
     this.formatTime = this.formatTime.bind(this);
     this.onTimeChange = this.onTimeChange.bind(this);
   }
@@ -35,8 +33,8 @@ export default class EntryEditor extends React.Component {
   }
 
   render() {
-    const { hoveredAddTimeBtn } = this.props;
-    const { startTime, endTime, timeDiff } = this.state;
+    const { startTime, endTime, timeDiff, hoveredAddTimeBtn } = this.state;
+    const { onAddEntry } = this.props;
 
     if (hoveredAddTimeBtn) {
       if (hoveredAddTimeBtn === 'work') {
@@ -50,21 +48,34 @@ export default class EntryEditor extends React.Component {
 
     return (
       <EntryEditorRoot>
-        <MyTextFieldTimePicker
-          id="startTime"
-          label="Start"
-          defaultValue={startTime}
-          onChange={this.onTimeChange}
+        <EntryFieldsRow>
+          <MyTextFieldTimePicker
+            id="startTime"
+            label="Start"
+            defaultValue={startTime}
+            onChange={this.onTimeChange}
+          />
+          <MyTextFieldTimePicker
+            id="endTime"
+            label="End"
+            defaultValue={endTime}
+            onChange={this.onTimeChange}
+          />
+          <NumberDisplay color={this.numDisplayColor} timeDiff={timeDiff} />
+        </EntryFieldsRow>
+        <AddTimeBtnGrp
+          onHover={this.addTimeBtnGrpHover}
+          onAddEntry={onAddEntry}
         />
-        <MyTextFieldTimePicker
-          id="endTime"
-          label="End"
-          defaultValue={endTime}
-          onChange={this.onTimeChange}
-        />
-        <NumberDisplay color={this.numDisplayColor} timeDiff={timeDiff} />
       </EntryEditorRoot>
     );
+  }
+
+  // TODO: throttle this?
+  addTimeBtnGrpHover(type) {
+    this.setState({
+      hoveredAddTimeBtn: type
+    });
   }
 
   calcTimeDiff() {
@@ -99,5 +110,5 @@ export default class EntryEditor extends React.Component {
 }
 
 EntryEditor.propTypes = {
-  hoveredAddTimeBtn: PropTypes.string
+  onAddEntry: PropTypes.function
 };
