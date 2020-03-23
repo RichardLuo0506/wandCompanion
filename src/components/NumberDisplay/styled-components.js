@@ -38,6 +38,7 @@ export const Sign = styled.span`
   align-self: center;
   margin-right: 2px;
 `;
+
 export const Number = styled.span`
   ${props => {
     if (props.inline) {
@@ -51,6 +52,7 @@ export const Number = styled.span`
   margin: 0 1px 0 3px;
   font-weight: normal;
 `;
+
 export const Unit = styled.span`
   color: ${props => (props.inline ? color.blue : 'inherit')};
 `;

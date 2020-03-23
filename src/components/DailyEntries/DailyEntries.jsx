@@ -79,7 +79,13 @@ export default class DailyEntries extends React.Component {
   }
 
   calcMinutesTotal(entries) {
-    const minutes = entries.reduce((sum, current) => sum + current.minutes, 0);
+    const minutes = entries.reduce((sum, current) => {
+      if (current.type === 'work') {
+        return sum + current.minutes;
+      } else {
+        return sum;
+      }
+    }, 0);
     return minutes;
   }
 
