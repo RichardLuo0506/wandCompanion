@@ -4,7 +4,7 @@ import TextField from '@material-ui/core/TextField';
 import { makeStyles } from '@material-ui/core/styles';
 
 const MyTextFieldTimePicker = props => {
-  const { id, label, defaultValue, onChange } = props;
+  const { id, label, value, onChange } = props;
   const classes = useStyles();
 
   const memoOnChange = useCallback(e => {
@@ -15,7 +15,7 @@ const MyTextFieldTimePicker = props => {
     <TextField
       label={label}
       type="time"
-      defaultValue={defaultValue}
+      value={value}
       className={classes.textField}
       onChange={memoOnChange}
       InputLabelProps={{
@@ -38,4 +38,4 @@ const useStyles = makeStyles(() => ({
   }
 }));
 
-export default MyTextFieldTimePicker;
+export default React.memo(MyTextFieldTimePicker);

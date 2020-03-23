@@ -16,19 +16,18 @@ import {
 } from './styled-components';
 
 const Entry = props => {
-  const { id } = props;
-  const { userEntry } = props;
-  const { startTimeFormatted } = userEntry;
-  const { endTimeFormatted } = userEntry;
-  const { type } = userEntry;
-  const { handleToggle } = props;
-  const { handleRemove } = props;
+  const { id, userEntry, handleEdit, handleRemove, handleToggle } = props;
+  const { startTimeFormatted, endTimeFormatted, type } = userEntry;
 
   return (
     <EntryRoot>
       <StartTime>{startTimeFormatted}</StartTime>
       <EndTime>{endTimeFormatted}</EndTime>
-      <ToggleButtonsContainer onClick={toggle}>
+      <ToggleButtonsContainer
+        onClick={() => {
+          handleToggle(id);
+        }}
+      >
         <ActiveToggle>
           <WorkIcon className={type === 'work' ? 'work-active' : ''} />
         </ActiveToggle>
@@ -38,26 +37,30 @@ const Entry = props => {
       </ToggleButtonsContainer>
       <EditButtonsContainer>
         <IconButtonWrapper>
-          <IconButton className="edit-button" size="small">
-            <DeleteIcon onClick={remove} />
+          <IconButton
+            className="edit-button"
+            size="small"
+            onClick={() => {
+              handleRemove(id);
+            }}
+          >
+            <DeleteIcon />
           </IconButton>
         </IconButtonWrapper>
         <IconButtonWrapper>
-          <IconButton className="edit-button" size="small">
+          <IconButton
+            className="edit-button"
+            size="small"
+            onClick={() => {
+              handleEdit(id);
+            }}
+          >
             <CreateIcon />
           </IconButton>
         </IconButtonWrapper>
       </EditButtonsContainer>
     </EntryRoot>
   );
-
-  function remove() {
-    handleRemove(id);
-  }
-
-  function toggle() {
-    handleToggle(id);
-  }
 };
 
 export default Entry;

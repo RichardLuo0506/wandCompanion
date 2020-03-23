@@ -22,6 +22,7 @@ export default class DailyEntries extends React.Component {
     };
 
     this.addEntry = this.addEntry.bind(this);
+    this.handleEdit = this.handleEdit.bind(this);
     this.toggleEntryType = this.toggleEntryType.bind(this);
     this.removeEntry = this.removeEntry.bind(this);
   }
@@ -30,6 +31,7 @@ export default class DailyEntries extends React.Component {
     const { entries } = this.state;
     const hasEntries = entries.length > 0;
     const minutesTotal = this.calcMinutesTotal(entries);
+
     return (
       <DailyEntriesRoot>
         <Title>
@@ -57,6 +59,7 @@ export default class DailyEntries extends React.Component {
                   // TODO: maybe switch this not to use index as key
                   id={index}
                   userEntry={userEntry}
+                  handleEdit={this.handleEdit}
                   handleToggle={this.toggleEntryType}
                   handleRemove={this.removeEntry}
                 />
@@ -73,6 +76,7 @@ export default class DailyEntries extends React.Component {
   addEntry(entry) {
     const { entries } = this.state;
     const newEntries = [...entries, entry];
+
     this.setState({
       entries: newEntries
     });
@@ -87,6 +91,14 @@ export default class DailyEntries extends React.Component {
       }
     }, 0);
     return minutes;
+  }
+
+  handleEdit(id) {
+    const { entries } = this.state;
+    const entry = entries[id];
+    const { passEntryToEditor } = this.props;
+
+    passEntryToEditor(entry);
   }
 
   toggleEntryType(id) {

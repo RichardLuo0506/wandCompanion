@@ -4,7 +4,7 @@ import FastfoodIcon from '@material-ui/icons/Fastfood';
 import WorkIcon from '@material-ui/icons/Work';
 
 const AddTimeBtnGrp = props => {
-  const { onHover, onAddEntry: addEntry } = props;
+  const { onHover, onAddEntry: addEntry, disabled } = props;
 
   return (
     <AddTimeBtnRoot>
@@ -14,6 +14,7 @@ const AddTimeBtnGrp = props => {
         onClick={() => addEntry('work')}
         color="secondary"
         startIcon={<WorkIcon />}
+        disabled={disabled}
       >
         Add Work
       </AddWorkBtn>
@@ -23,6 +24,7 @@ const AddTimeBtnGrp = props => {
         onClick={() => addEntry('lunch')}
         color="primary"
         endIcon={<FastfoodIcon />}
+        disabled={disabled}
       >
         Add Lunch
       </AddWorkBtn>

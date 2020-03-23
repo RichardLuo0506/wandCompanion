@@ -6,9 +6,8 @@ import { color, text } from '../theme';
 import { parse, format } from 'date-fns';
 import differenceInMinutes from 'date-fns/differenceInMinutes';
 import AddTimeBtnGrp from '../AddTimeBtnGrp/AddTimeBtnGrp';
-import PropTypes from 'prop-types';
 
-export default class EntryEditor extends React.Component {
+export default class EntryEditor extends React.PureComponent {
   constructor(props) {
     super(props);
     this.date = new Date();
@@ -30,10 +29,18 @@ export default class EntryEditor extends React.Component {
 
   componentDidUpdate() {
     this.updateNumberDisplay();
+    this.updateFormattedTimes();
+    this.updateDisabledState();
   }
 
   render() {
-    const { startTime, endTime, timeDiff, hoveredAddTimeBtn } = this.state;
+    const {
+      startTime,
+      endTime,
+      timeDiff,
+      hoveredAddTimeBtn,
+      invalid: invalidEntry
+    } = this.state;
     const { onAddEntry } = this.props;
 
     if (hoveredAddTimeBtn) {
@@ -52,13 +59,13 @@ export default class EntryEditor extends React.Component {
           <MyTextFieldTimePicker
             id="startTime"
             label="Start"
-            defaultValue={startTime}
+            value={startTime}
             onChange={this.onTimeChange}
           />
           <MyTextFieldTimePicker
             id="endTime"
             label="End"
-            defaultValue={endTime}
+            value={endTime}
             onChange={this.onTimeChange}
           />
           <NumberDisplay color={this.numDisplayColor} timeDiff={timeDiff} />
@@ -66,6 +73,7 @@ export default class EntryEditor extends React.Component {
         <AddTimeBtnGrp
           onHover={this.addTimeBtnGrpHover}
           onAddEntry={onAddEntry}
+          disabled={invalidEntry}
         />
       </EntryEditorRoot>
     );
@@ -90,7 +98,16 @@ export default class EntryEditor extends React.Component {
   formatTime(time) {
     const timeParsed = parse(time, 'HH:mm', this.date);
     const timeFormatted = format(timeParsed, 'hh:mm a');
+
     return timeFormatted;
+  }
+
+  loadEntry(entry) {
+    this.setState({
+      startTime: entry.startTime,
+      endTime: entry.endTime,
+      type: entry.type
+    });
   }
 
   onTimeChange(id, time) {
@@ -100,15 +117,21 @@ export default class EntryEditor extends React.Component {
     });
   }
 
+  updateDisabledState() {
+    const { timeDiff } = this.state;
+    const valid = timeDiff > 0;
+    this.setState({ invalid: !valid });
+  }
+
   updateNumberDisplay() {
-    const { timeDiff: oldTimeDiff } = this.state;
-    const newTimeDiff = this.calcTimeDiff();
-    if (oldTimeDiff !== newTimeDiff) {
-      this.setState({ ...this.state, timeDiff: this.calcTimeDiff() });
-    }
+    this.setState({ timeDiff: this.calcTimeDiff() });
+  }
+
+  updateFormattedTimes() {
+    const { startTime, endTime } = this.state;
+    this.setState({
+      startTimeFormatted: this.formatTime(startTime),
+      endTimeFormatted: this.formatTime(endTime)
+    });
   }
 }
-
-EntryEditor.propTypes = {
-  onAddEntry: PropTypes.function
-};

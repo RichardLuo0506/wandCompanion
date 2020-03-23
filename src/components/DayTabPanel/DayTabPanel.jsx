@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import {
   DayTabPanelRoot,
   TopSection,
@@ -17,6 +16,7 @@ export default class TabPanel extends React.Component {
     this.dailyEntriesRef = React.createRef();
     this.entryEditorRef = React.createRef();
     this.onAddEntry = this.onAddEntry.bind(this);
+    this.passEntryToEditor = this.passEntryToEditor.bind(this);
   }
 
   render() {
@@ -25,7 +25,10 @@ export default class TabPanel extends React.Component {
     return (
       <DayTabPanelRoot role="tabpanel" hidden={value !== index} {...other}>
         <TopSection boxShadow={2}>
-          <DailyEntries ref={this.dailyEntriesRef} />
+          <DailyEntries
+            ref={this.dailyEntriesRef}
+            passEntryToEditor={this.passEntryToEditor}
+          />
         </TopSection>
         <BottomSection>
           <EntryEditor ref={this.entryEditorRef} onAddEntry={this.onAddEntry} />
@@ -47,9 +50,9 @@ export default class TabPanel extends React.Component {
     };
     dailyEntriesInstance.addEntry(entry);
   }
-}
 
-TabPanel.propTypes = {
-  index: PropTypes.any.isRequired,
-  value: PropTypes.any.isRequired
-};
+  passEntryToEditor(entry) {
+    const { current: entryEditorInstance } = this.entryEditorRef;
+    entryEditorInstance.loadEntry(entry);
+  }
+}
