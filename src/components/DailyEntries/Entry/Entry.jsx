@@ -17,12 +17,8 @@ import {
 
 const Entry = props => {
   const { id } = props;
-  const { userEntry } = props;
-  const { startTimeFormatted } = userEntry;
-  const { endTimeFormatted } = userEntry;
-  const { type } = userEntry;
-  const { handleToggle } = props;
-  const { handleRemove } = props;
+  const { userEntry, handleEdit, handleRemove, handleToggle } = props;
+  const { startTimeFormatted, type, endTimeFormatted } = userEntry;
 
   return (
     <EntryRoot>
@@ -38,18 +34,22 @@ const Entry = props => {
       </ToggleButtonsContainer>
       <EditButtonsContainer>
         <IconButtonWrapper>
-          <IconButton className="edit-button" size="small">
-            <DeleteIcon onClick={remove} />
+          <IconButton className="edit-button" size="small" onClick={remove}>
+            <DeleteIcon />
           </IconButton>
         </IconButtonWrapper>
         <IconButtonWrapper>
-          <IconButton className="edit-button" size="small">
+          <IconButton className="edit-button" size="small" onClick={edit}>
             <CreateIcon />
           </IconButton>
         </IconButtonWrapper>
       </EditButtonsContainer>
     </EntryRoot>
   );
+
+  function edit() {
+    handleEdit(id);
+  }
 
   function remove() {
     handleRemove(id);

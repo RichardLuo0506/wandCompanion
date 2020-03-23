@@ -14,27 +14,33 @@ export default class TabPanel extends React.Component {
     super(props);
 
     this.state = {
-      hoveredAddTimeBtn: ''
+      hoveredAddTimeBtn: '',
+      editedEntry: {}
     };
 
     this.dailyEntriesRef = React.createRef();
     this.entryEditorRef = React.createRef();
     this.onAddEntry = this.onAddEntry.bind(this);
+    this.passEntryToEditor = this.passEntryToEditor.bind(this);
   }
 
   render() {
     const { value, index, ...other } = this.props;
     const { hoveredAddTimeBtn } = this.state;
-
+    const { editedEntry } = this.props;
     return (
       <DayTabPanelRoot role="tabpanel" hidden={value !== index} {...other}>
         <TopSection boxShadow={2}>
-          <DailyEntries ref={this.dailyEntriesRef} />
+          <DailyEntries
+            ref={this.dailyEntriesRef}
+            passEntryToEditor={this.passEntryToEditor}
+          />
         </TopSection>
         <BottomSection>
           <EntryEditor
             hoveredAddTimeBtn={hoveredAddTimeBtn}
             ref={this.entryEditorRef}
+            editedUserEntry={editedEntry}
           />
           <AddTimeBtnGrp
             onHover={this.addTimeBtnGrpHover.bind(this)}
@@ -64,6 +70,11 @@ export default class TabPanel extends React.Component {
       type: entryType
     };
     dailyEntriesInstance.addEntry(entry);
+  }
+
+  passEntryToEditor(entry) {
+    const { current: entryEditorInstance } = this.entryEditorRef;
+    entryEditorInstance.loadEntry(entry);
   }
 }
 

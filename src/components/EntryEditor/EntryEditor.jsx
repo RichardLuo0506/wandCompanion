@@ -20,6 +20,8 @@ export default class EntryEditor extends React.Component {
     };
     this.state = {
       ...defaults,
+      // TODO: not correct way of doing this
+      ...this.state,
       ...{
         startTimeFormatted: this.formatTime(defaults.startTime),
         endTimeFormatted: this.formatTime(defaults.endTime)
@@ -32,6 +34,8 @@ export default class EntryEditor extends React.Component {
 
   componentDidUpdate() {
     this.updateNumberDisplay();
+    console.log(this.state)
+
   }
 
   render() {
@@ -80,6 +84,15 @@ export default class EntryEditor extends React.Component {
     const timeParsed = parse(time, 'HH:mm', this.date);
     const timeFormatted = format(timeParsed, 'hh:mm a');
     return timeFormatted;
+  }
+
+  loadEntry(entry) {
+    this.setState({
+      ...this.state,
+      startTime: entry.startTime,
+      endTime: entry.endTime,
+      type: entry.type
+    });
   }
 
   onTimeChange(id, time) {
